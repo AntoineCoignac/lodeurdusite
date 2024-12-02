@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Azeret+Mono:ital,wght@0,100..900;1,100..900&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+:root{
+    --black:#000;
+    --dark:#1f1f1f;
+    --grey:#7d7d7d;
+    --light:#EEEEEE;
+    --white:#FFF;
+    --purple: #3C0747;
+    --red: #FF4B03;
+    --ease: 0.3s ease;    
+}
+
+/* Reset */
+
+*{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    background: none;
+    appearance: none;
+    font-family: "DM Sans", sans-serif;
+}
+
+/* Form */
+
+form.form{
+    width: 400px;
+    max-width: 90%;
+    margin: 128px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    .field{
+        display: flex;
+        flex-direction: column;
+        position: relative;
+
+        label{
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            color: var(--dark);
+            user-select: none;
+        }
+
+        input{
+            height: 78px;
+            width: 100%;
+            padding: 40px 16px 16px;
+            border-radius: 8px;
+            color: var(--dark);
+            border: 1px solid var(--grey);
+            outline: 3px solid transparent;
+            transition: var(--ease);
+
+            &::placeholder{
+                color: var(--grey);
+            }
+
+            &:hover{
+                border: 1px solid var(--dark);
+            }
+
+            &:focus{
+                border: 1px solid var(--black);
+                outline: 3px solid var(--light);
+            }
+        }
+    }
+
+    button[type="submit"]{
+        width: 100%;
+        height: 48px;
+        border-radius: 8px;
+        background-color: var(--dark);
+        color: var(--white);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+        user-select: none;
+        outline: 3px solid transparent;
+        transition: var(--ease);
+
+        &:hover{
+            background-color: var(--black);
+        }
+
+        &:focus{
+            outline: 3px solid var(--light);
+        }
+    }
+}
+
+/* Captcha */
+
+.captcha-form-button{
+    width: 100%;
+    height: 64px;
+    border-radius: 8px;
+    background-color: var(--light);
+    border: 1px solid var(--grey);
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 0 16px;
+    cursor: pointer;
+    outline: 3px solid transparent;
+    user-select: none;
+    transition: var(--ease);
+
+    &:hover{
+        border: 1px solid var(--dark);
+
+        .captcha-form-checkbox{
+            border: 1px solid var(--dark);
+        }
+    }
+
+    &:focus{
+        border: 1px solid var(--black);
+        outline: 3px solid var(--light);
+
+        .captcha-form-checkbox{
+            border: 1px solid var(--black);
+        }
+    }
+
+    .captcha-form-checkbox{
+        width: 24px;
+        height: 24px;
+        border-radius: 4px;
+        background-color: var(--white);
+        border: 1px solid var(--grey);
+        transition: var(--ease);
+    }
+
+    .captcha-form-text{
+        color: var(--dark);
+    }
+}
+
+.captcha-wrapper{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 64px;
+
+    *{
+        font-family: "JetBrains Mono", monospace;
+    }
+
+    .captcha-background{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .captcha-popup{
+        position: relative;
+        margin: 0 auto;
+        max-width: 1240px;
+        width: 100%;
+        height: 100%;
+        border: 3px solid var(--black);
+        background-color: var(--purple);
+        box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), inset 16px -16px rgba(0, 0, 0, 0.25);
+        padding: 32px 64px 64px;
+
+
+        .captcha-title-1{
+
+        }
+
+        .captcha-title-2{
+            
+        }
+
+        .captcha-title-3{
+            
+        }
+
+        .captcha-text{
+            
+        }
+
+        .captcha-close{
+            position: absolute;
+            right: -16px;
+            top: -16px;
+            width: 48px;
+            height: 48px;
+            border: 3px solid var(--black);
+            background-color: var(--red);
+            box-shadow: inset 8px -8px rgba(0, 0, 0, 0.25);
+            background-image: url("data:image/svg+xml,%3Csvg width='34' height='34' viewBox='0 0 34 34' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='7.10046' y='9.92892' width='4' height='24' transform='rotate(-45 7.10046 9.92892)' fill='black'/%3E%3Crect x='7.10046' y='24.0711' width='24' height='4' transform='rotate(-45 7.10046 24.0711)' fill='black'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            background-position: 8px 1px;
+
+            &:active{
+                box-shadow: inset 4px -4px rgba(0, 0, 0, 0.25);
+                background-position: 6px 2px;
+                scale: 96%;
+                right: -14px;
+                top: -14px;
+            }
+        }
+
+        .captcha-wrapper-title{
+
+        }
+
+        .captcha-wrapper-content{
+            .captcha-wrapper-game{
+                .captcha-wrapper-score{
+
+                }
+
+                .captcha-wrapper-click{
+                    .captcha-clickable{
+
+                    }
+                }
+            }
+
+            .captcha-wrapper-shop{
+                .captcha-wrapper-improvements{
+                    .captcha-button-improvement{
+                            
+                    }
+                }
+
+                .captcha-wrapper-items{
+                    .captcha-button-item{
+
+                    }
+                }
+
+                .captcha-button-finish{
+
+                }
+            }
+        }
+    }
+}
+
+
