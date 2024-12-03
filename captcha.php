@@ -11,8 +11,8 @@
         <div class="captcha-wrapper-content">
             <div class="captcha-wrapper-game">
                 <div class="captcha-wrapper-score">
-                    <span class="captcha-title-2">24.000</span>
-                    <span class="captcha-text">0,1 per second</span>
+                    <span class="captcha-title-2" id="score">0</span>
+                    <span class="captcha-text" id="speed">0 per second</span>
                 </div>
                 <div class="captcha-wrapper-click">
                     <img class="captcha-clickable" src="https://www.pngarts.com/files/4/Cookie-PNG-Download-Image.png" alt="clickable">
@@ -33,30 +33,14 @@
                     <button class="captcha-button-improvement" id="">
 
                     </button>
-                    <button class="captcha-button-improvement" id="">
+                    <button class="captcha-button-improvement" id="" disabled>
 
                     </button>
-                    <button class="captcha-button-improvement" id="">
+                    <button class="captcha-button-improvement" id="" disabled>
 
                     </button>
                 </div>
                 <div class="captcha-wrapper-items">
-                    <button class="captcha-button-item" id="">
-                        <span class="captcha-title-3">Cursor</span>
-                        <span class="captcha-text">10.000</span>
-                    </button>
-                    <button class="captcha-button-item" id="" disabled>
-                        <span class="captcha-title-3">Cursor</span>
-                        <span class="captcha-text">10.000</span>
-                    </button>
-                    <button class="captcha-button-item" id="" disabled>
-                        <span class="captcha-title-3">Cursor</span>
-                        <span class="captcha-text">10.000</span>
-                    </button>
-                    <button class="captcha-button-item" id="" disabled>
-                        <span class="captcha-title-3">Cursor</span>
-                        <span class="captcha-text">10.000</span>
-                    </button>
                 </div>
                 <button class="captcha-button-finish" disabled>
                     100.000 to continue
@@ -65,3 +49,4 @@
         </div>
     </div>
 </div>
+<script src="captcha.js"></script>
