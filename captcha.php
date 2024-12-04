@@ -21,29 +21,11 @@
             <div class="captcha-wrapper-shop">
                 <span class="captcha-title-2">Store</span>
                 <div class="captcha-wrapper-improvements">
-                    <button class="captcha-button-improvement" id="">
-
-                    </button>
-                    <button class="captcha-button-improvement" id="">
-
-                    </button>
-                    <button class="captcha-button-improvement" id="">
-
-                    </button>
-                    <button class="captcha-button-improvement" id="">
-
-                    </button>
-                    <button class="captcha-button-improvement" id="" disabled>
-
-                    </button>
-                    <button class="captcha-button-improvement" id="" disabled>
-
-                    </button>
                 </div>
                 <div class="captcha-wrapper-items">
                 </div>
                 <button class="captcha-button-finish" disabled>
-                    100.000 to continue
+                    10 000 to continue
                 </button>
             </div>
         </div>

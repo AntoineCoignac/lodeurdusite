@@ -93,11 +93,16 @@ form.form{
         outline: 3px solid transparent;
         transition: var(--ease);
 
-        &:hover{
+        &:disabled{
+            opacity: 0.5;
+            cursor:not-allowed;
+        }
+
+        &:not(:disabled):hover{
             background-color: var(--black);
         }
 
-        &:focus{
+        &:not(:disabled):focus{
             outline: 3px solid var(--light);
         }
     }
@@ -141,12 +146,20 @@ form.form{
         }
     }
 
+    &.completed{
+        .captcha-form-checkbox{
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 13L9 17L19 7' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+        }
+    }
+
     .captcha-form-checkbox{
         width: 24px;
         height: 24px;
         border-radius: 4px;
         background-color: var(--white);
         border: 1px solid var(--grey);
+        background-position: center;
+        background-repeat: no-repeat;
         transition: var(--ease);
     }
 
@@ -331,13 +344,16 @@ form.form{
 
                 .captcha-wrapper-improvements{
                     width: 100%;
-                    height: fit-content;
+                    min-height: 48px;
+                    height: 48px;
                     display: flex;
-                    flex-wrap: wrap;
+                    flex-wrap: nowrap;
                     gap: 8px;
+                    overflow-x: hidden;
 
                     .captcha-button-improvement{
                         width: 48px;
+                        min-width: 48px;
                         height: 48px;
                         border: 3px solid var(--black);
                         background-color: var(--purple);
@@ -356,6 +372,10 @@ form.form{
                             transform: translate(0px, 0px);
                             filter: drop-shadow(0px 0px 0 var(--purple-dark));
                             background-color: var(--purple-light);
+                        }
+
+                        &.hide{
+                            display: none;
                         }
                     }
                 }

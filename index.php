@@ -7,16 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <form action="" class="form">
+    <form class="form">
         <div class="field">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" placeholder="Enter your name">
+            <input type="text" name="name" id="name" placeholder="Enter your name" required>
         </div>
         <button type="button" class="captcha-form-button">
             <span class="captcha-form-checkbox"></span>
             <span class="captcha-form-text">I'm not a robot</span>
         </button>
-        <button type="submit">
+        <button type="submit" disabled>
             Continue
         </button>
     </form>
