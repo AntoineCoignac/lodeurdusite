@@ -30,9 +30,9 @@ $cards = [
     <div class="instruction">Player [1|2], ask a question to Player [2|1] and try to guess the card.</div>
     <div class="card-grid">
         <?php
-        // Afficher chaque carte en utilisant la méthode render()
-        foreach ($cards as $card):
-            echo $card->render();
+        // Afficher chaque carte avec un identifiant unique
+        foreach ($cards as $index => $card):
+            echo $card->render();  // Passer l'index pour chaque carte
         endforeach;
         ?>
     </div>
@@ -43,47 +43,6 @@ $cards = [
     </div>
 </div>
 
-<script>
-    // Fonction pour gérer la sélection d'une carte
-    function toggleSelect(cardElement) {
-        cardElement.classList.toggle('selected');
-        updateGuessButton();
-    }
-
-    // Fonction pour révoquer les cartes sélectionnées
-    function revokeSelected() {
-        const selectedCards = document.querySelectorAll('.card.selected');
-        selectedCards.forEach(card => {
-            card.classList.add('revoke');
-            card.classList.remove('selected');
-        });
-        updateGuessButton();  // Vérifie si le bouton doit être activé ou non après la révocation
-    }
-
-    // Fonction pour deviner une carte
-    function guessSelected() {
-        const selectedCards = document.querySelectorAll('.card.selected');
-        if (selectedCards.length === 1) {
-            alert("You guessed a card!");
-            selectedCards.forEach(card => card.classList.remove('selected'));
-        } else {
-            alert("Please select only one card!");
-        }
-    }
-
-    // Fonction pour mettre à jour l'état du bouton "Guess"
-    function updateGuessButton() {
-        const selectedCards = document.querySelectorAll('.card.selected');
-        const guessButton = document.getElementById('guessButton');
-
-        // Active le bouton si exactement une carte est sélectionnée
-        if (selectedCards.length === 1) {
-            guessButton.disabled = false;
-        } else {
-            guessButton.disabled = true;
-        }
-    }
-
-</script>
+<script src="script.js"></script>
 </body>
 </html>
