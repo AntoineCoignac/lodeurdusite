@@ -308,6 +308,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             button.id = `item-${index}`;
             button.disabled = true;
             button.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
+
             // Toujours afficher l'item 1
             if (index == 0) {
                 button.classList.add("show-item")
@@ -415,4 +416,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
         uiUpdateItems();
         uiUpdateImprovements();
     }, 100);
+
+    // Instructor
+
+    const tips = [
+        "Don't forget to upgrade your items for better efficiency!",
+        "Every piece of waste collected helps save marine life!",
+        "Did you know? Plastic takes over 400 years to decompose.",
+        "Watch your progress! Check the top-right corner for stats.",
+        "Keep collecting to unlock powerful upgrades!",
+        "Remember, teamwork makes the dream work!"
+      ];
+      
+      function updateTip() {
+        const speechBubble = document.getElementById("speech-bubble");
+        const randomTip = tips[Math.floor(Math.random() * tips.length)];
+        speechBubble.textContent = randomTip;
+      }
+      
+      // Change the tip every 10 seconds
+      setInterval(updateTip, 10000);
 })
