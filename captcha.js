@@ -269,6 +269,30 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 items[9].cpsMultiplier*=2
             }
         },
+        {
+            name: "x2 Item 11",
+            cost: 500000000000,
+            buy: false,
+            function: function(){
+                items[10].cpsMultiplier*=2
+            }
+        },
+        {
+            name: "x2 Item 12",
+            cost: 1000000000000,
+            buy: false,
+            function: function(){
+                items[11].cpsMultiplier*=2
+            }
+        },
+        {
+            name: "x10 Click",
+            cost: 10000000000000,
+            buy: false,
+            function: function(){
+                cursorMultiplier*=10
+            }
+        },
     ]
 
     // UI Function
