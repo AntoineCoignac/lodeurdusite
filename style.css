@@ -6,11 +6,11 @@
     --grey:#7d7d7d;
     --light:#EEEEEE;
     --white:#FFF;
-    --purple: #3C0747;
-    --purple-dark: #18021C;
-    --purple-light: #5B1869;
+    --blue: #469bc9;
+    --blue-dark: #297198;
+    --blue-light: #7aafcb;
     --red: #FF4B03;
-    --yellow: #FFD400;
+    --yellow: #e4d89c;
     --green: #8CFF00;
     --ease: 0.3s ease;    
 }
@@ -110,6 +110,61 @@ form.form{
 
 /* Captcha */
 
+.captcha-plus-text{
+    font-size: 1.5rem;
+    color: var(--white);
+    -webkit-text-stroke: 3px var(--black) ;
+    font-weight: 900;
+    paint-order: stroke fill;
+    filter: drop-shadow(-1px 1px 0 var(--blue-dark));
+    text-align: center;
+    transform: translateY(-30px);
+    animation: fly 2s ease-out;
+}
+
+@keyframes fly {
+    0%{
+        opacity: 1;
+        transform: translateY(-30px);
+    }100%{
+        opacity: 0;
+        transform: translateY(-80px) scale(0.6);
+    }
+}
+
+@keyframes reversed {
+    0%{
+        transform: scaleX(1) ;
+        filter: invert(0);
+    }90%{
+        transform: scaleX(1) ;
+        filter: invert(0);
+    }91%{
+        transform: scaleX(-1) ;
+        filter: invert(1);
+    }99%{
+        transform: scaleX(-1) ;
+        filter: invert(1);
+    }100%{
+        transform: scaleX(1) ;
+        filter: invert(0);
+    }
+}
+
+@keyframes order-1 {
+    0%{
+        order: 0 ;
+    }90%{
+        order: 0 ;
+    }91%{
+        order: 2 ;
+    }99%{
+        order: 2 ;
+    }100%{
+        order: 0 ;
+    }
+}
+
 .captcha-form-button{
     width: 100%;
     height: 64px;
@@ -179,13 +234,17 @@ form.form{
     align-items: center;
     padding: 32px;
     visibility: hidden;
+    opacity: 0;
+    transition: opacity var(--ease);
 
     &.show{
         visibility: visible;
+        opacity: 1;
     }
 
     *{
         font-family: "JetBrains Mono", monospace;
+        user-select: none;
     }
 
     .captcha-background{
@@ -195,7 +254,6 @@ form.form{
         top: 0;
         left: 0;
         z-index: -1;
-        background-color: rgba(0, 0, 0, 0.4);
     }
 
     .captcha-popup{
@@ -205,13 +263,22 @@ form.form{
         width: 100%;
         height: 100%;
         border: 3px solid var(--black);
-        background-color: var(--purple);
+        background-color: var(--blue);
+        background-image: url(./img/background.webp);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
         box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25), inset 16px -16px rgba(0, 0, 0, 0.25);
         padding: 32px 64px 32px;
         display: flex;
         flex-direction: column;
         gap: 32px;
+        animation: reversed 100s infinite;
+        transition: var(--ease);
 
+        &:has(>.captcha-wrapper-content>.captcha-wrapper-shop>.captcha-button-finish.dragging){
+            scale: 0.9;
+        }
 
         .captcha-title-1{
             font-size: 2rem;
@@ -220,7 +287,7 @@ form.form{
             text-transform: uppercase;
             font-weight: 900;
             paint-order: stroke fill;
-            filter: drop-shadow(-1px 1px 0 var(--purple-dark));
+            filter: drop-shadow(-1px 1px 0 var(--blue-dark));
             text-align: center;
         }
 
@@ -230,7 +297,7 @@ form.form{
             -webkit-text-stroke: 3px var(--black) ;
             font-weight: 900;
             paint-order: stroke fill;
-            filter: drop-shadow(-1px 1px 0 var(--purple-dark));
+            filter: drop-shadow(-1px 1px 0 var(--blue-dark));
             text-align: center;
         }
 
@@ -291,7 +358,7 @@ form.form{
 
             .captcha-wrapper-game{
                 border: 3px solid var(--black);
-                background-color: var(--purple);
+                background-color: var(--blue);
                 box-shadow: inset 8px -8px rgba(0, 0, 0, 0.25);
                 width: 100%;
                 height: calc(100% - 96px);
@@ -300,6 +367,7 @@ form.form{
                 display: flex;
                 flex-direction: column;
                 align-items: center;
+                cursor: url(./img/cursor.png) 36 36, auto;
 
                 .captcha-wrapper-score{
                     display: flex;
@@ -309,7 +377,6 @@ form.form{
 
                 .captcha-wrapper-click{
                     margin: auto;
-                    cursor: pointer;
                     transition: cubic-bezier(.43,1.95,.3,1) 0.3s;
 
                     &:active{
@@ -321,16 +388,17 @@ form.form{
                     }
 
                     .captcha-clickable{
-                        width: 256px;
+                        width: fit-content;
                         height: 256px;
-                        aspect-ratio: 1/1;
+                        object-fit: contain;
+                        -webkit-user-drag: none;
                     }
                 }
             }
 
             .captcha-wrapper-shop{
                 border: 3px solid var(--black);
-                background-color: var(--purple);
+                background-color: var(--blue);
                 box-shadow: inset 8px -8px rgba(0, 0, 0, 0.25);
                 width: 381px;
                 min-width: 381px;
@@ -356,12 +424,12 @@ form.form{
                         min-width: 48px;
                         height: 48px;
                         border: 3px solid var(--black);
-                        background-color: var(--purple);
+                        background-color: var(--blue);
                         cursor: pointer;
 
                         &:hover{
                             transform: translate(1px, -1px);
-                            filter: drop-shadow(-1px 1px 0 var(--purple-dark));
+                            filter: drop-shadow(-1px 1px 0 var(--blue-dark));
                         }
 
                         &:disabled{
@@ -370,8 +438,8 @@ form.form{
 
                         &:active:not(:disabled){
                             transform: translate(0px, 0px);
-                            filter: drop-shadow(0px 0px 0 var(--purple-dark));
-                            background-color: var(--purple-light);
+                            filter: drop-shadow(0px 0px 0 var(--blue-dark));
+                            background-color: var(--blue-light);
                         }
 
                         &.hide{
@@ -401,12 +469,21 @@ form.form{
                         height: fit-content;
                         padding: 10px 24px 14px;
                         border-bottom: 3px solid var(--black);
-                        background-color: var(--purple);
+                        background-color: var(--blue);
                         box-shadow: inset 8px -8px rgba(0, 0, 0, 0.25);
                         display: flex;
                         flex-direction: column;
                         cursor: pointer;
                         scroll-snap-align: start;
+                        position: relative;
+
+                        &:first-child{
+                            animation: order-1 100s infinite;
+                        }
+
+                        &:nth-child(3n){
+                            animation: order-1 100s infinite;
+                        }
 
                         &:last-child{
                             border-bottom: none;
@@ -417,7 +494,7 @@ form.form{
                         }
 
                         &:disabled{
-                            background-color: var(--purple-dark);
+                            background-color: var(--blue-dark);
                             opacity: 0.5;
 
                             .captcha-text{
@@ -428,7 +505,23 @@ form.form{
                         &:active:not(:disabled){
                             box-shadow: inset 4px -4px rgba(0, 0, 0, 0.25);
                             padding: 12px 22px 12px;
-                            background-color: var(--purple-light);
+                            background-color: var(--blue-light);
+                        }
+
+                        #number{
+                            position: absolute;
+                            right: 16px;
+                            font-size: 2.5em;
+                            font-weight: 900;
+                            color: var(--blue-light);
+                            visibility: hidden;
+                            opacity: 0;
+                            transition: var(--ease);
+
+                            &.show{
+                                visibility: visible;
+                                opacity: 1;
+                            }
                         }
                     }
                 }
@@ -451,6 +544,12 @@ form.form{
                     &:active:not(:disabled){
                         box-shadow: inset 4px -4px rgba(0, 0, 0, 0.25);
                         padding: 18px 24px 18px 22px;
+                        color: var(--black);
+                    }
+
+                    &.dragging{
+                        opacity: 1;
+                        color: var(--black);
                     }
                 }
             }

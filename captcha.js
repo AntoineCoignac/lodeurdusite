@@ -8,13 +8,38 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let cursorMultiplier = 1;
 
     const clickBox = document.querySelector(".captcha-wrapper-click");
+    const uiImage = document.querySelector(".captcha-clickable");
 
-    clickBox.addEventListener("click", function(){
-        score+=cursorInitialValue*cursorMultiplier;
+    const images = [
+        "./img/can.png",
+        "./img/bag.png",
+        "./img/bottle.png"
+    ];
+
+    let currentImageIndex = 0;
+
+    clickBox.addEventListener("click", function(event){
+        score += cursorInitialValue * cursorMultiplier;
         uiUpdateScore();
         uiUpdateItems();
         uiUpdateImprovements();
-    })
+        const plusText = document.createElement("span");
+        plusText.classList.add("captcha-plus-text");
+        plusText.textContent = `+${cursorInitialValue * cursorMultiplier}`;
+        plusText.style.position = "fixed";
+        plusText.style.left = `${event.clientX}px`;
+        plusText.style.top = `${event.clientY}px`;
+        plusText.style.userSelect = "none";
+        plusText.style.pointerEvents = "none";
+        document.body.appendChild(plusText);
+        setTimeout(() => {
+            document.body.removeChild(plusText);
+        }, 2000);
+
+        // Change the src of uiImage
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        uiImage.src = images[currentImageIndex];
+    });
 
     // Config
 
@@ -288,9 +313,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
             costSpan.textContent = (item.costInitialValue * item.costMultiplier).toLocaleString();
             costSpan.id = "price";
 
+            const numberSpan = document.createElement("span");
+            numberSpan.className = "captcha-number";
+            numberSpan.textContent = item.number;
+            numberSpan.id = "number";
+
             // Ajout des spans au bouton
             button.appendChild(titleSpan);
             button.appendChild(costSpan);
+            button.appendChild(numberSpan);
 
             // Ajout du bouton à l'élément wrapper
             uiItemsWrapper.appendChild(button);
@@ -307,13 +338,19 @@ document.addEventListener("DOMContentLoaded", (event) => {
         items.forEach((item, index) => {
             const uiItem = uiItemsWrapper.querySelector(`#item-${index}`);
             const uiPrice = uiItem.querySelector("#price");
+            const uiNumber = uiItem.querySelector("#number");
             uiPrice.textContent = (item.costInitialValue * item.costMultiplier).toLocaleString();
             uiItem.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
+            uiNumber.textContent = item.number;
 
             if (score >= (item.costInitialValue * item.costMultiplier)) {
                 uiItem.disabled = false;
             }else{
                 uiItem.disabled = true;
+            }
+
+            if (item.number > 0){
+                uiNumber.classList.add("show");
             }
         });
     }
