@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", (event) => {
     var cards = document.getElementsByClassName("card")
-    var submit = document.getElementById("submit")
+    var submit = document.getElementById("submitButton")
 
 
     var addSelected = function() {
@@ -9,6 +9,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
             card.classList.remove("selected");
         }
         this.classList.add("selected");
+        document.getElementById("submitButton").disabled = false;
+        document.getElementById("cardID").value = document.getElementsByClassName("selected")[0].id;
+
     };
 
 
@@ -16,12 +19,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     for (var i = 0; i < cards.length; i++) {
         cards[i].addEventListener('click', addSelected, false);
     }
-
-    submit.addEventListener('click', function() {
-        document.getElementById("cardID").value = document.getElementsByClassName("selected")[0].id;
-        document.getElementById("submit").submit();
-    } )
-
 })
 
 

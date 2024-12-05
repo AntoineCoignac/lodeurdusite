@@ -72,6 +72,11 @@ class Card
         $this->selected = $bool;
     }
 
+    public function getIndex()
+    {
+        return $this->index;
+    }
+
     public function render()
     {
         // Vérifier si la carte est "revoked"

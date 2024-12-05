@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Inclure le fichier de la classe Card
 include("Card.php");
 
@@ -14,6 +15,8 @@ $cards = [
     new Card("Titre 8", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
     new Card("Titre 9", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
 ];
+
+$_SESSION['cards'] = $cards;
 ?>
 
 
@@ -39,8 +42,8 @@ $cards = [
                     endforeach; 
                 ?>
             <form action="submit.php" method="POST" id="submit">
-                <input type="hidden" id="cardID"></input>
-                <button type="button">Select card</button>
+                <input type="hidden" name="cardID" id="cardID"></input>
+                <button type="submit" id="submitButton" disabled=true>Select card</button>
             </form>
         </div>
     </div>
