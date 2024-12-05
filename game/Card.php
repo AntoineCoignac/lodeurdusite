@@ -2,11 +2,14 @@
 
 class Card
 {
+    public static $globalIndex = 0;
     private $description;
     private $image;
     private $revoked;
     private $winningCard;
     private $selected;
+
+    private $index;
 
     public function __construct($_description, $_image)
     {
@@ -15,6 +18,8 @@ class Card
         $this->revoked = false;
         $this->winningCard = false;
         $this->selected = false;
+        $this->index = self::$globalIndex;
+        self::$globalIndex++;
     }
 
     public function getDescription()
@@ -73,7 +78,7 @@ class Card
         $revokedClass = $this->revoked ? " revoked" : "";
 
         return "
-    <div class='card$revokedClass'>
+    <div class='card$revokedClass' id='$this->index'>
         
         <h3 class='card-title'>
             " . htmlspecialchars($this->description) . "

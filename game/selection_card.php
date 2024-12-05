@@ -28,7 +28,7 @@ $cards = [
 <body>
     <div>
         <?php
-            echo $_SESSION["player-1"]
+            echo $_SESSION["player-1"];
         ?>
     </div>
     <div class="container">
