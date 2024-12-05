@@ -8,13 +8,38 @@ document.addEventListener("DOMContentLoaded", (event) => {
     let cursorMultiplier = 1;
 
     const clickBox = document.querySelector(".captcha-wrapper-click");
+    const uiImage = document.querySelector(".captcha-clickable");
 
-    clickBox.addEventListener("click", function(){
-        score+=cursorInitialValue*cursorMultiplier;
+    const images = [
+        "./img/can.png",
+        "./img/bag.png",
+        "./img/bottle.png"
+    ];
+
+    let currentImageIndex = 0;
+
+    clickBox.addEventListener("click", function(event){
+        score += cursorInitialValue * cursorMultiplier;
         uiUpdateScore();
         uiUpdateItems();
         uiUpdateImprovements();
-    })
+        const plusText = document.createElement("span");
+        plusText.classList.add("captcha-plus-text");
+        plusText.textContent = `+${cursorInitialValue * cursorMultiplier}`;
+        plusText.style.position = "fixed";
+        plusText.style.left = `${event.clientX}px`;
+        plusText.style.top = `${event.clientY}px`;
+        plusText.style.userSelect = "none";
+        plusText.style.pointerEvents = "none";
+        document.body.appendChild(plusText);
+        setTimeout(() => {
+            document.body.removeChild(plusText);
+        }, 2000);
+
+        // Change the src of uiImage
+        currentImageIndex = (currentImageIndex + 1) % images.length;
+        uiImage.src = images[currentImageIndex];
+    });
 
     // Config
 
@@ -269,6 +294,30 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 items[9].cpsMultiplier*=2
             }
         },
+        {
+            name: "x2 Item 11",
+            cost: 500000000000,
+            buy: false,
+            function: function(){
+                items[10].cpsMultiplier*=2
+            }
+        },
+        {
+            name: "x2 Item 12",
+            cost: 1000000000000,
+            buy: false,
+            function: function(){
+                items[11].cpsMultiplier*=2
+            }
+        },
+        {
+            name: "x10 Click",
+            cost: 10000000000000,
+            buy: false,
+            function: function(){
+                cursorMultiplier*=10
+            }
+        },
     ]
 
     // UI Function
@@ -308,6 +357,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             button.id = `item-${index}`;
             button.disabled = true;
             button.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
+
             // Toujours afficher l'item 1
             if (index == 0) {
                 button.classList.add("show-item")
@@ -324,9 +374,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
             costSpan.textContent = (item.costInitialValue * item.costMultiplier).toLocaleString();
             costSpan.id = "price";
 
+            const numberSpan = document.createElement("span");
+            numberSpan.className = "captcha-number";
+            numberSpan.textContent = item.number;
+            numberSpan.id = "number";
+
             // Ajout des spans au bouton
             button.appendChild(titleSpan);
             button.appendChild(costSpan);
+            button.appendChild(numberSpan);
 
             // Ajout du bouton à l'élément wrapper
             uiItemsWrapper.appendChild(button);
@@ -343,8 +399,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
         items.forEach((item, index) => {
             const uiItem = uiItemsWrapper.querySelector(`#item-${index}`);
             const uiPrice = uiItem.querySelector("#price");
+            const uiNumber = uiItem.querySelector("#number");
             uiPrice.textContent = (item.costInitialValue * item.costMultiplier).toLocaleString();
             uiItem.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
+            uiNumber.textContent = item.number;
 
             if (score >= (item.costInitialValue * item.costMultiplier)) {
                 uiItem.disabled = false;
@@ -352,6 +410,9 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 uiItem.disabled = true;
             }
 
+            if (item.number > 0){
+                uiNumber.classList.add("show");
+            }
             if (score >= item.costInitialValue * 0.10 && !uiItem.classList.contains("show-item")) {
                 uiItem.classList.add("show-item");
             }
@@ -415,4 +476,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
         uiUpdateItems();
         uiUpdateImprovements();
     }, 100);
+
+    // Instructor
+
+    const tips = [
+        "Don't forget to upgrade your items for better efficiency!",
+        "Every piece of waste collected helps save marine life!",
+        "Did you know? Plastic takes over 400 years to decompose.",
+        "Watch your progress! Check the top-right corner for stats.",
+        "Keep collecting to unlock powerful upgrades!",
+        "Remember, teamwork makes the dream work!"
+      ];
+      
+      function updateTip() {
+        const speechBubble = document.getElementById("speech-bubble");
+        const randomTip = tips[Math.floor(Math.random() * tips.length)];
+        speechBubble.textContent = randomTip;
+      }
+      
+      // Change the tip every 10 seconds
+      setInterval(updateTip, 10000);
 })

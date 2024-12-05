@@ -15,4 +15,37 @@ document.addEventListener("DOMContentLoaded", (event) => {
         captchaFormButton.classList.add("completed");
         submitButton.disabled = false;
     })
+
+    // Rendre le bouton draggable
+    captchaContinueButton.setAttribute("draggable", "true");
+
+    let savedText = ""
+
+    captchaContinueButton.addEventListener("dragstart", (event) => {
+        event.dataTransfer.setData("text/plain", "");
+        captchaContinueButton.classList.add("dragging");
+        savedText = captchaContinueButton.textContent;
+        captchaContinueButton.textContent = "Get me out of here";
+    });
+
+    captchaContinueButton.addEventListener("dragend", (event) => {
+        const captchaPopup = document.querySelector(".captcha-popup");
+        const rect = captchaPopup.getBoundingClientRect();
+        
+        // Vérifier si le bouton est en dehors de la popup
+        if (
+            event.clientX < rect.left ||
+            event.clientX > rect.right ||
+            event.clientY < rect.top ||
+            event.clientY > rect.bottom
+        ) {
+            captchaIsDone = true;
+            captchaFormButton.classList.add("completed");
+            submitButton.disabled = false;
+            captchaWrapper.classList.remove("show"); 
+        }
+
+        captchaContinueButton.classList.remove("dragging");
+        captchaContinueButton.textContent = savedText;
+    });
 });
