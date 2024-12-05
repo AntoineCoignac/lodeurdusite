@@ -11,6 +11,7 @@ function toggleSelect(cardElement) {
 
 // Fonction pour révoquer les cartes sélectionnées
 function revokeSelected() {
+    document.getElementById("submit").submit();
     const selectedCards = document.querySelectorAll('.card.selected');
     selectedCards.forEach(card => {
         card.classList.add('revoke');  // Marquer la carte comme révoquée

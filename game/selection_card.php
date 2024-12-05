@@ -33,12 +33,12 @@ $_SESSION['cards'] = $cards;
 <body>
     <div>
         <?php
-            if (isPlayer2()) {
+            /*if (isPlayer2()) {
                 echo $_GET['player2'];
             }
             else {
                 echo $_GET['player1'];
-            }
+            }*/
         ?>
     </div>
     <div class="container">
@@ -49,6 +49,7 @@ $_SESSION['cards'] = $cards;
             <form action="submit.php" method="POST" id="submit">
                 <input type="hidden" name="cardID" id="cardID"></input>
                 <input type="hidden" name="player" id="player"/>
+                <input type="hidden" name="origin" id="origin"/>
                 <button type="submit" id="submitButton" disabled="disabled">Select card</button>
             </form>
         </div>

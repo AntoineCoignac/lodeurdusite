@@ -38,7 +38,7 @@ $cards = [
 
     <div class="buttons">
         <button onclick="revokeSelected()">Revoke</button>
-        <button id="guessButton" onclick="guessSelected()" disabled>Guess</button>
+        <button id="guessButton" onclick="guessSelected()" disabled="disabled">Guess</button>
     </div>
 </div>
 

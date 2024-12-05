@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     var submit = document.getElementById("submitButton")
     var playerNumber = new URLSearchParams(window.location.search).get("player");
     document.getElementById("player").value = playerNumber == null ? 1 : playerNumber;
-
+    document.getElementById("origin").value = "selection";
 
     var addSelected = function() {
         for(let card of document.getElementsByClassName("card")) {
