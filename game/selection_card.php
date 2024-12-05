@@ -28,19 +28,19 @@ $cards = [
 <body>
     <div>
         <?php
-            echo $_SESSION["player-1"];
+            // echo $_SESSION["player-1"];
         ?>
     </div>
     <div class="container">
-        <h2 class="name-player">Sélectionner votre carte</h2>
+        <h2 class="name-player">Select your card</h2>
         <div class="grid-container">
-            <form action="submit.php" method="POST">
-                <?php foreach ($cards as $card):
+            <?php foreach ($cards as $card):
                         echo $card->render();
                     endforeach; 
-                    ?>
+                ?>
+            <form action="submit.php" method="POST" id="submit">
                 <input type="hidden" id="cardID"></input>
-                <button id="submit">Select card</button>
+                <button type="button">Select card</button>
             </form>
         </div>
     </div>
