@@ -59,14 +59,27 @@ $cards = [
         });
     }
 
-    // Fonction pour deviner une carte (pour l'exemple, on affiche un message)
+    // Fonction pour deviner une carte
     function guessSelected() {
         const selectedCards = document.querySelectorAll('.card.selected');
-        if (selectedCards.length > 0) {
+        if (selectedCards.length === 1) {
             alert("You guessed a card!");
             selectedCards.forEach(card => card.classList.remove('selected'));
         } else {
-            alert("Please select a card first!");
+            alert("Please select only one card!");
+        }
+    }
+
+    // Fonction pour mettre à jour l'état du bouton "Guess"
+    function updateGuessButton() {
+        const selectedCards = document.querySelectorAll('.card.selected');
+        const guessButton = document.getElementById('guessButton');
+
+        // Active le bouton si exactement une carte est sélectionnée
+        if (selectedCards.length === 1) {
+            guessButton.disabled = false;
+        } else {
+            guessButton.disabled = true;
         }
     }
 </script>
