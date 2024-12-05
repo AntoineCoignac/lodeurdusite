@@ -22,123 +22,7 @@ $cards = [
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who Is It? Game</title>
-    <style>
-        /* Style général */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-            margin: 0;
-            padding: 0;
-        }
-
-        .card-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
-            margin: 20px;
-        }
-
-        .card {
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            position: relative;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: scale(1.05);
-        }
-
-        .card.selected {
-            border: 2px solid #003366;
-            box-shadow: 0 0 10px rgba(0, 51, 102, 0.5);
-        }
-
-        .card.revoke {
-            filter: brightness(0.7);
-        }
-
-        .card h3 {
-            margin: 0;
-            padding: 15px;
-            background-color: #f4f4f4;
-            border-bottom: 1px solid #ddd;
-            text-align: center;
-            font-weight: bold;
-        }
-
-        .card img {
-            width: 100%;
-            height: auto;
-        }
-
-        .card .info-btn {
-            position: absolute;
-            top: 50%;
-            right: 10px;
-            transform: translateY(-50%);
-            background-color: #003366;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 50%;
-            font-size: 12px;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        .card .info-btn:hover {
-            background-color: #005b99;
-        }
-
-        /* Boutons */
-        .buttons {
-            text-align: center;
-            margin: 20px;
-        }
-
-        .buttons button {
-            padding: 10px 20px;
-            font-size: 16px;
-            background-color: #003366;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .buttons button:hover {
-            background-color: #005b99;
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-
-        /* Joueur courant */
-        .current-player {
-            font-size: 18px;
-            color: #007BFF;
-            font-weight: bold;
-            margin-bottom: 20px;
-            text-align: center; /* Centrage du texte */
-        }
-
-        /* Texte principal */
-        .instruction {
-            font-size: 16px;
-            color: #333;
-            margin-bottom: 30px;
-            text-align: center; /* Centrage du texte */
-        }
-
-    </style>
+    <link href="style2.css" rel="stylesheet" />
 </head>
 <body>
 <div class="container">
@@ -186,6 +70,5 @@ $cards = [
         }
     }
 </script>
-
 </body>
 </html>
