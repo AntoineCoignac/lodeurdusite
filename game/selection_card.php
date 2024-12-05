@@ -34,14 +34,16 @@ $cards = [
     <div class="container">
         <h2 class="name-player">Sélectionner votre carte</h2>
         <div class="grid-container">
-        <?php foreach ($cards as $card): ?> 
-            <div class="card" onclick="handleCardClick(<?php $card.selected ?>)">
-                <h3><?php echo htmlspecialchars($card->getDescription()); ?>
-                    <a href="#" class="info-btn"><?php echo $card->isRevoked() ? "X" : "i"; ?></a>
-                </h3>
-                <img src="<?php echo htmlspecialchars($card->getImage()); ?>" alt="Image">
-            </div>
-        <?php endforeach; ?>
+            <form action="submit.php" method="POST">
+                <?php foreach ($cards as $card):
+                        echo $card->render();
+                    endforeach; 
+                    ?>
+                <input type="hidden" id="cardID"></input>
+                <button id="submit">Select card</button>
+            </form>
+        </div>
     </div>
+
 </body>
 </html>
