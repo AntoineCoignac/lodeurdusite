@@ -2,7 +2,8 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     var cards = document.getElementsByClassName("card")
     var submit = document.getElementById("submitButton")
-    document.getElementById("player").value = l
+    var playerNumber = new URLSearchParams(window.location.search).get("player");
+    document.getElementById("player").value = playerNumber == null ? 1 : playerNumber;
 
 
     var addSelected = function() {

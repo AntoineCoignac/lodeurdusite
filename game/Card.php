@@ -9,10 +9,9 @@ class Card
     private $winningCard;
     private $selected;
     private $index;
+    private $human;
 
-    private $humain;
-
-    public function __construct($_description, $_image, $_humain)
+    public function __construct($_description, $_image, $_human)
     {
         $this->description = $_description;
         $this->image = $_image;
@@ -20,7 +19,7 @@ class Card
         $this->winningCard = false;
         $this->selected = false;
         $this->index = self::$globalIndex;
-        $this->humain = $_humain;
+        $this->human = $_human;
         self::$globalIndex++;
     }
 
@@ -83,13 +82,13 @@ class Card
         $this->index = $index;
     }
 
-    public function getHumain()
+    public function isHuman()
     {
-        return $this->humain;
+        return $this->human;
     }
 
-    public function setHumain($humain) {
-        $this->humain = $humain;
+    public function setHuman($human) {
+        $this->human = $human;
     }
 
     public function render()

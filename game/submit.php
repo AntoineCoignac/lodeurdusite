@@ -9,7 +9,12 @@ foreach ($cards as $card):
         break;
     }
 endforeach;
-header("Location: selection_card.php?player=2");
+    if ($_POST["player"] == 2) {
+        header("Location: guessboard.php?");
+    }
+    else {
+        header("Location: selection_card.php?player=2");
+    }
 die();
 
 
