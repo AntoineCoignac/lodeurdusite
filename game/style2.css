@@ -23,19 +23,24 @@ body {
     cursor: pointer;
 }
 
+/* Sélection de la carte */
+.card.selected {
+    border: 2px solid #003366;
+    box-shadow: 0 0 10px rgba(0, 51, 102, 0.5);
+    transform: scale(1.05);
+}
+
+/* Effet hover */
 .card:hover {
     transform: scale(1.05);
 }
 
-.card.selected {
-    border: 2px solid #003366;
-    box-shadow: 0 0 10px rgba(0, 51, 102, 0.5);
-}
-
+/* Effet revoke */
 .card.revoke {
     filter: brightness(0.7);
 }
 
+/* Titres des cartes */
 .card h3 {
     margin: 0;
     padding: 15px;
@@ -50,6 +55,7 @@ body {
     height: auto;
 }
 
+/* Bouton d'information */
 .card .info-btn {
     position: absolute;
     top: 50%;
