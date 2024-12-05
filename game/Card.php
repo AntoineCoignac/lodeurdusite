@@ -8,10 +8,11 @@ class Card
     private $revoked;
     private $winningCard;
     private $selected;
-
     private $index;
 
-    public function __construct($_description, $_image)
+    private $humain;
+
+    public function __construct($_description, $_image, $_humain)
     {
         $this->description = $_description;
         $this->image = $_image;
@@ -19,6 +20,7 @@ class Card
         $this->winningCard = false;
         $this->selected = false;
         $this->index = self::$globalIndex;
+        $this->humain = $_humain;
         self::$globalIndex++;
     }
 
@@ -75,6 +77,19 @@ class Card
     public function getIndex()
     {
         return $this->index;
+    }
+
+    public function setIndex($index) {
+        $this->index = $index;
+    }
+
+    public function getHumain()
+    {
+        return $this->humain;
+    }
+
+    public function setHumain($humain) {
+        $this->humain = $humain;
     }
 
     public function render()

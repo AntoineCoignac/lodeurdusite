@@ -2,6 +2,7 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     var cards = document.getElementsByClassName("card")
     var submit = document.getElementById("submitButton")
+    document.getElementById("player").value = l
 
 
     var addSelected = function() {
@@ -11,7 +12,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
         this.classList.add("selected");
         document.getElementById("submitButton").disabled = false;
         document.getElementById("cardID").value = document.getElementsByClassName("selected")[0].id;
-
     };
 
 
