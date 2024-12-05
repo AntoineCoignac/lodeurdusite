@@ -28,7 +28,14 @@
                     10 000 to continue
                 </button>
             </div>
-        </div>
+
+
     </div>
+    <div id="stickman-container">
+  <div id="stickman"></div>
+  <div id="speech-bubble">Welcome to the game! Let's clean the ocean together!</div>
+        </div>
+</div>
+
 </div>
 <script src="captcha.js"></script>
