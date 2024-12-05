@@ -2,11 +2,14 @@
 
 class Card
 {
+    public static $globalIndex = 0;
     private $description;
     private $image;
     private $revoked;
     private $winningCard;
     private $selected;
+
+    private $index;
 
     public function __construct($_description, $_image)
     {
@@ -14,6 +17,9 @@ class Card
         $this->image = $_image;
         $this->revoked = false;
         $this->winningCard = false;
+        $this->selected = false;
+        $this->index = self::$globalIndex;
+        self::$globalIndex++;
     }
 
     public function getDescription()
@@ -56,64 +62,36 @@ class Card
         $this->winningCard = $winningCard;
     }
 
+    public function getSelected()
+    {
+        return $this->selected;
+    }
+
+    public function setSelected($bool)
+    {
+        $this->selected = $bool;
+    }
+
     public function render()
     {
         // Vérifier si la carte est "revoked"
-        $revokedClass = $this->revoked ? " revocation" : "";
+        $revokedClass = $this->revoked ? " revoked" : "";
 
         return "
-    <div style='
-        border: 1px solid #ccc; 
-        border-radius: 8px; 
-        width: 250px; 
-        text-align: center; 
-        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1); 
-        margin: 10px; 
-        overflow: hidden; 
-        font-family: Arial, sans-serif; 
-        position: relative; 
-        " . ($this->revoked ? "filter: brightness(0.7);" : "") . "'>
+    <div class='card$revokedClass' id='$this->index'>
         
-        <h3 style='
-            margin: 0; 
-            padding: 15px; 
-            background-color: #f4f4f4; 
-            border-bottom: 1px solid #ddd; 
-            font-size: 18px; 
-            font-weight: bold; 
-            display: flex; 
-            justify-content: center; 
-            align-items: center; 
-            position: relative;'>
-            
+        <h3 class='card-title'>
             " . htmlspecialchars($this->description) . "
-            
-            <a href='" . ($this->revoked ? "#" : "#") . "' style='
-                position: absolute; 
-                right: 10px; 
-                top: 50%; 
-                transform: translateY(-50%); 
-                text-decoration: none; 
-                background-color: " . ($this->revoked ? "#aaa" : "#003366") . "; 
-                color: white; 
-                padding: 5px 10px; 
-                border-radius: 50%; 
-                font-size: 12px; 
-                font-weight: bold; 
-                pointer-events: " . ($this->revoked ? "none" : "auto") . ";'>
+            <a href='" . ($this->revoked ? "#" : "#") . "' class='info-btn" . ($this->revoked ? " disabled" : "") . "'>
                 i
             </a>
         </h3>
         
-        <img src='" . htmlspecialchars($this->image) . "' 
-            alt='Image' 
-            style='
-                display: block; 
-                width: 100%; 
-                height: auto;'>
+        <img src='" . htmlspecialchars($this->image) . "' alt='Image' class='card-image'>
     </div>
     ";
     }
+
 
 
 
