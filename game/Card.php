@@ -14,6 +14,7 @@ class Card
         $this->image = $_image;
         $this->revoked = false;
         $this->winningCard = false;
+        $this->selected = false;
     }
 
     public function getDescription()
@@ -54,6 +55,16 @@ class Card
     public function setWinningCard($winningCard)
     {
         $this->winningCard = $winningCard;
+    }
+
+    public function getSelected()
+    {
+        return $this->selected;
+    }
+
+    public function setSelected($bool)
+    {
+        $this->selected = $bool;
     }
 
     public function render()

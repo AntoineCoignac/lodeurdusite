@@ -22,22 +22,26 @@ $cards = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="selection_card.js"></script> 
     <title>Card selection</title>
 </head>
 <body>
-    
+    <div>
+        <?php
+            echo $_SESSION["player-1"]
+        ?>
+    </div>
     <div class="container">
         <h2 class="name-player">Sélectionner votre carte</h2>
         <div class="grid-container">
-        <?php foreach ($cards as $card): ?>
-            <div class="card" onclick="toggleSelect(this)">
+        <?php foreach ($cards as $card): ?> 
+            <div class="card" onclick="handleCardClick(<?php $card.selected ?>)">
                 <h3><?php echo htmlspecialchars($card->getDescription()); ?>
                     <a href="#" class="info-btn"><?php echo $card->isRevoked() ? "X" : "i"; ?></a>
                 </h3>
                 <img src="<?php echo htmlspecialchars($card->getImage()); ?>" alt="Image">
             </div>
         <?php endforeach; ?>
-        </div>
     </div>
 </body>
 </html>
