@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     let items = [
         {
-            name: "Item 1",
+            name: "Bucket",
             costInitialValue: 10,
             costMultiplier: 1,
             cpsInitialValue: 1,
@@ -30,74 +30,90 @@ document.addEventListener("DOMContentLoaded", (event) => {
             number: 0
         },
         {
-            name: "Item 2",
+            name: "Fishing Net",
             costInitialValue: 100,
-            costMultiplier: 1,
-            cpsInitialValue: 2,
-            cpsMultiplier: 1,
-            number: 0
-        },
-        {
-            name: "Item 3",
-            costInitialValue: 1000,
-            costMultiplier: 1,
-            cpsInitialValue: 4,
-            cpsMultiplier: 1,
-            number: 0
-        },
-        {
-            name: "Item 4",
-            costInitialValue: 10000,
             costMultiplier: 1,
             cpsInitialValue: 8,
             cpsMultiplier: 1,
             number: 0
         },
         {
-            name: "Item 5",
+            name: "Trash Collector Boat",
+            costInitialValue: 1000,
+            costMultiplier: 1,
+            cpsInitialValue: 80,
+            cpsMultiplier: 1,
+            number: 0
+        },
+        {
+            name: "Drone Collector",
+            costInitialValue: 10000,
+            costMultiplier: 1,
+            cpsInitialValue: 480,
+            cpsMultiplier: 1,
+            number: 0
+        },
+        {
+            name: "Trash Boom",
             costInitialValue: 100000,
             costMultiplier: 1,
-            cpsInitialValue: 16,
+            cpsInitialValue: 2800,
             cpsMultiplier: 1,
             number: 0
         },
         {
-            name: "Item 6",
+            name: "Underwater Vacuum",
             costInitialValue: 1000000,
             costMultiplier: 1,
-            cpsInitialValue: 32,
+            cpsInitialValue: 16800,
             cpsMultiplier: 1,
             number: 0
         },
         {
-            name: "Item 7",
+            name: "Marine Robot",
             costInitialValue: 10000000,
             costMultiplier: 1,
-            cpsInitialValue: 64,
+            cpsInitialValue: 100000,
             cpsMultiplier: 1,
             number: 0
         },
         {
-            name: "Item 8",
+            name: "Recycling Station",
             costInitialValue: 100000000,
             costMultiplier: 1,
-            cpsInitialValue: 128,
+            cpsInitialValue: 600000,
             cpsMultiplier: 1,
             number: 0
         },
         {
-            name: "Item 9",
+            name: "Ocean Skimmer",
             costInitialValue: 1000000000,
             costMultiplier: 1,
-            cpsInitialValue: 256,
+            cpsInitialValue: 3600000,
             cpsMultiplier: 1,
             number: 0
         },
         {
-            name: "Item 10",
+            name: "AI-Controlled Fleet",
             costInitialValue: 10000000000,
             costMultiplier: 1,
-            cpsInitialValue: 512,
+            cpsInitialValue: 21600000,
+            cpsMultiplier: 1,
+            number: 0
+        },
+        {
+            name: "Nano-Bots",
+            costInitialValue: 100000000000,
+            costMultiplier: 1,
+            cpsInitialValue: 100000000,
+            cpsMultiplier: 1,
+            number: 0
+        },
+        {
+            name: "Global Cleanup Satellite",
+            costInitialValue: 1000000000000,
+            costMultiplier: 1,
+            cpsInitialValue: 700000000,
             cpsMultiplier: 1,
             number: 0
         },
@@ -115,7 +131,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         },
         {
-            name: "x2 Item 1",
+            name: "x2 Bucket",
             cost: 1000,
             buy: false,
             function: function(){
@@ -128,6 +144,17 @@ document.addEventListener("DOMContentLoaded", (event) => {
             buy: false,
             function: function(){
                 cursorMultiplier*=3
+            }
+        },
+        {
+            name: "x3 Item 1",
+            cost: 2000,
+            buy: false,
+            function: function(){
+                goal = 100000
+                uiUpdateEnd();
+                uiUpdateEndButton()
+                // TODO : animation changement goal
             }
         },
         {
@@ -269,6 +296,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
         uiSpeed.innerHTML = `${Math.floor(speed).toLocaleString()} per second`;
     }
 
+    const uiUpdateEndButton = () => {
+        uiEndButton.innerText = `${Math.floor(goal).toLocaleString()} to continue`;
+    }
+
     const uiSetupItems = () => {
         items.forEach((item, index) => {
             // Création d'un bouton pour chaque item
@@ -277,6 +308,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
             button.id = `item-${index}`;
             button.disabled = true;
             button.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
+            // Toujours afficher l'item 1
+            if (index == 0) {
+                button.classList.add("show-item")
+                button.classList.add("show-content")
+            } 
 
             // Création des éléments span pour le nom et le coût
             const titleSpan = document.createElement("span");
@@ -314,6 +350,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 uiItem.disabled = false;
             }else{
                 uiItem.disabled = true;
+            }
+
+            if (score >= item.costInitialValue * 0.10 && !uiItem.classList.contains("show-item")) {
+                uiItem.classList.add("show-item");
+            }
+            if (score >= item.costInitialValue * 0.80 && !uiItem.classList.contains("show-content")) {
+                uiItem.classList.add("show-content");
             }
         });
     }
@@ -355,7 +398,6 @@ document.addEventListener("DOMContentLoaded", (event) => {
     }
 
     // Setup
-
     uiSetupItems();
     uiSetupImprovements();
 

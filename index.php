@@ -22,6 +22,5 @@
     </form>
     <?php include 'captcha.php';?>
     <script src="script.js"></script>
-    <a href="game/guessboard.php">Test</a>
 </body>
 </html>
