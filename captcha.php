@@ -31,10 +31,10 @@
 
 
     </div>
-    <div id="stickman-container">
-  <div id="stickman"></div>
-  <div id="speech-bubble">Welcome to the game! Let's clean the ocean together!</div>
-        </div>
+    <div id="penguin-container">
+  <img id="penguin" src="img/penguin_confident_2.png"></img>
+  <div id="speech-bubble">Welcome to Retro Marine Waster Clicker Captcha! Can you prove that you are a robot?</div>
+    </div>
 </div>
 
 </div>
