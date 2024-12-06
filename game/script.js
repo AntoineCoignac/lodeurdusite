@@ -11,13 +11,18 @@ function toggleSelect(cardElement) {
 
 // Fonction pour révoquer les cartes sélectionnées
 function revokeSelected() {
-    document.getElementById("submit").submit();
     const selectedCards = document.querySelectorAll('.card.selected');
     selectedCards.forEach(card => {
         card.classList.add('revoke');  // Marquer la carte comme révoquée
         card.classList.remove('selected');  // Retirer la sélection de la carte
     });
     updateGuessButton();  // Vérifie si le bouton doit être activé ou non après la révocation
+
+    document.getElementById("player").value = new URLSearchParams(window.location.search).get("player");
+    document.getElementById("revokedElements").value = JSON.stringify(Array.from(selectedCards).map(card => card.id));
+    document.getElementById("origin").value = "revoke";
+    document.getElementById("submit").submit();
+
 }
 
 // Fonction pour deviner une carte

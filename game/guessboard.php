@@ -4,17 +4,8 @@ include("Card.php");
 include("utils.php");
 
 // Créer des cartes d'exemple
-$cards = [
-    new Card("Titre 1", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", true),
-    new Card("Titre 2", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", false),
-    new Card("Titre 3", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", true),
-    new Card("Titre 4", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", false),
-    new Card("Titre 5", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", true),
-    new Card("Titre 6", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", false),
-    new Card("Titre 7", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", true),
-    new Card("Titre 8", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", false),
-    new Card("Titre 9", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg", true),
-];
+session_start();
+$cards = $_SESSION["cards"];
 
 ?>
 
@@ -37,8 +28,14 @@ $cards = [
     </div>
 
     <div class="buttons">
-        <button onclick="revokeSelected()">Revoke</button>
-        <button id="guessButton" onclick="guessSelected()" disabled="disabled">Guess</button>
+        
+        <form action="submit.php" method="POST" id="submit">
+            <input type="hidden" name="player" id="player"/>
+            <input type="hidden" name="origin" id="origin"/>
+            <input type="hidden" name="revokedElements" id="revokedElements"/>
+            <button onclick="revokeSelected()">Revoke</button>
+            <button id="guessButton" onclick="guessSelected()" disabled="disabled">Guess</button>        </form>
+    
     </div>
 </div>
 
