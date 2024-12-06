@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     const cursorInitialValue = 1;
     let cursorMultiplier = 1;
+    let overallMultiplier = 1;
 
     const clickBox = document.querySelector(".captcha-wrapper-click");
     const uiImage = document.querySelector(".captcha-clickable");
@@ -199,6 +200,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         },
         {
+            name: "+5% Overall",
+            cost: 2500,
+            buy: false,
+            img: "./img/icons/can_5_overall.svg",
+            function: function () {
+                overallMultiplier += 0.05
+            }
+        },
+        {
             name: "x2 Bucket",
             cost: 2000,
             buy: false,
@@ -226,6 +236,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
             img: "./img/icons/3_x2.svg",
             function: function () {
                 items[2].cpsMultiplier *= 2
+            }
+        },
+        {
+            name: "x2 Bucket",
+            cost: 9000,
+            buy: false,
+            img: "./img/icons/1_x2.svg",
+            function: function () {
+                items[0].cpsMultiplier *= 2
             }
         },
         {
@@ -262,6 +281,15 @@ document.addEventListener("DOMContentLoaded", (event) => {
             img: "./img/icons/2_10p.svg",
             function: function () {
                 items[1].cpsMultiplier *= 1.10
+            }
+        },
+        {
+            name: "+5% Overall",
+            cost: 105000,
+            buy: false,
+            img: "./img/icons/can_5_overall.svg",
+            function: function () {
+                overallMultiplier += 0.05
             }
         },
         {
@@ -307,6 +335,24 @@ document.addEventListener("DOMContentLoaded", (event) => {
             img: "./img/icons/7_x2.svg",
             function: function () {
                 items[6].cpsMultiplier *= 2
+            }
+        },
+        {
+            name: "x8 click",
+            cost: 55000000,
+            buy: false,
+            img: "./img/icons/cursor_x6.svg",
+            function: function () {
+                cursorMultiplier *= 6
+            }
+        },
+        {
+            name: "+5% Overall",
+            cost: 55000000,
+            buy: false,
+            img: "./img/icons/can_5_overall.svg",
+            function: function () {
+                overallMultiplier += 0.05
             }
         },
         {
@@ -456,6 +502,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 uiItem.disabled = true;
             }
 
+            if (goal <= 10000 && score >= 9000) {
+                goal = 100000
+                uiUpdateEnd()
+                uiUpdateEndButton()
+
+                // TODO : animation aug de l'objectif
+            }
+
             if (item.number > 0) {
                 uiNumber.classList.add("show");
             }
@@ -515,7 +569,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         let calculatedSpeed = 0;
         items.forEach(item => {
             score += ((item.cpsInitialValue * item.cpsMultiplier) / 10) * item.number;
-            calculatedSpeed += ((item.cpsInitialValue * item.cpsMultiplier) / 10) * item.number;
+            calculatedSpeed += ((item.cpsInitialValue * item.cpsMultiplier * overallMultiplier) / 10) * item.number;
         })
         speed = calculatedSpeed * 10;
         uiUpdateScore();
@@ -524,7 +578,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         uiUpdateImprovements();
     }, 100);
 
-    // Instructor
+    // Instructor 
 
     const tips = [
         {
