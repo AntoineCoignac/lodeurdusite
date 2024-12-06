@@ -1,5 +1,8 @@
 <?php
+include("Card.php");
+session_start();
 
+var_dump($_POST);
 if (isset($_POST['playerNumber'])) {
     session_start();
     //TODO: afficher gagnant
