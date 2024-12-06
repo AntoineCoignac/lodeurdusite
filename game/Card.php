@@ -10,8 +10,9 @@ class Card
     private $selected;
     private $index;
     private $human;
+    private $related;
 
-    public function __construct($_description, $_image, $_human)
+    public function __construct($_description, $_image, $_human, $_related)
     {
         $this->description = $_description;
         $this->image = $_image;
@@ -20,6 +21,7 @@ class Card
         $this->selected = false;
         $this->index = self::$globalIndex;
         $this->human = $_human;
+        $this->related = $_related;
         self::$globalIndex++;
     }
 
@@ -111,6 +113,18 @@ class Card
     ";
     }
 
+    public static function getCardsFromFile($filePath)
+    {
+        $jsonData = file_get_contents($filePath);
+
+        $data = json_decode($jsonData, true);
+
+        foreach ($data as $item) {
+            $card = new Card($item['description'], $item['image'], $item['human'], $item['related']);
+            $cards[] = $card;
+        }
+        return $cards;
+    }
 
 
 
