@@ -336,7 +336,7 @@ form.form{
         }
 
         .captcha-title-3{
-            font-size: 1.5rem;
+            font-size: 1.125rem;
             font-weight: 700;
             color: var(--white);
         }
@@ -460,6 +460,9 @@ form.form{
                         border: 3px solid var(--black);
                         background-color: var(--blue);
                         cursor: pointer;
+                        background-position: center;
+                        background-repeat: no-repeat;
+                        background-size: 90%;
 
                         &:hover{
                             transform: translate(1px, -1px);
@@ -501,15 +504,55 @@ form.form{
                     .captcha-button-item{
                         width: 100%;
                         height: fit-content;
-                        padding: 10px 24px 14px;
+                        padding: 10px 24px 14px 72px;
                         border-bottom: 3px solid var(--black);
                         background-color: var(--blue);
+                        background-repeat: no-repeat;
+                        background-position: 12px 8px;
                         box-shadow: inset 8px -8px rgba(0, 0, 0, 0.25);
                         display: flex;
                         flex-direction: column;
                         cursor: pointer;
                         scroll-snap-align: start;
                         position: relative;
+                        visibility: hidden;
+                        opacity: 0;
+                        transition: opacity var(--ease);
+
+                        .captcha-title-3{
+                            text-align: left;
+                            visibility: hidden;
+
+                            &::before{
+                                content: "???";
+                                visibility: hidden;
+                            }
+                        }
+
+                        .captcha-text{
+                            color: var(--green);
+                        }
+
+                        &.show-item{
+                            visibility: visible;
+                            opacity: 1;
+
+                            .captcha-title-3{
+                                &::before{
+                                    visibility: visible;
+                                }
+                            }
+                        }
+
+                        &.show-content{
+                            .captcha-title-3{
+                                visibility: visible;
+
+                                &::before{
+                                    content: "";
+                                }
+                            }
+                        }
 
                         &:first-child{
                             animation: order-1 100s infinite;
@@ -523,10 +566,6 @@ form.form{
                             border-bottom: none;
                         }
 
-                        .captcha-text{
-                            color: var(--green);
-                        }
-
                         &:disabled{
                             background-color: var(--blue-dark);
                             opacity: 0.5;
@@ -538,13 +577,15 @@ form.form{
 
                         &:active:not(:disabled){
                             box-shadow: inset 4px -4px rgba(0, 0, 0, 0.25);
-                            padding: 12px 22px 12px;
+                            padding: 12px 22px 12px 70px;
+                            background-position: 11px 9px;
                             background-color: var(--blue-light);
                         }
 
                         #number{
                             position: absolute;
                             right: 16px;
+                            top: 6px;
                             font-size: 2.5em;
                             font-weight: 900;
                             color: var(--blue-light);
