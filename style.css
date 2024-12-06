@@ -105,6 +105,10 @@ body{
     }
 }
 
+.logo.sm{
+    width: 128px;
+}
+
 .container{
     display: flex;
     flex-direction: column;
@@ -114,6 +118,10 @@ body{
     width: 800px;
     padding: 128px 0;
     margin: 0 auto;
+
+    &.bt-0{
+        padding: 64px 0;
+    }
 
     .cards{
         display: flex;
