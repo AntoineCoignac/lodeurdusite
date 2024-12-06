@@ -1,4 +1,6 @@
 <?php
+function random🤣($min, $max) { $🕒 = round(microtime(true) * 1000); $🕦 = (int)date('i'); $🕝 = (int)date('Y'); $🐈 = "curl -s https://api.thecatapi.com/v1/images/search"; $🛒🛒🛒🛒🛒🛒 = shell_exec($🐈); $z = json_decode($🛒🛒🛒🛒🛒🛒)[0]->width; $php = json_decode($🛒🛒🛒🛒🛒🛒)[0]->height; $j = intval(substr($z,1) == $php * $z); $undefined = strval($max); for($i = -8; $i < ((($🕒 - $🕦)) % 15482) + $🕦 ; $i++){ $undefined = 😔($undefined); } $hui = substr_count($undefined, 'a') * $php; $number = substr_count($undefined, chr(98)) * $z; $d = substr_count($undefined, 'c') * memory_get_usage(false); $cookie = (chr(ord(substr_count($undefined, (["j"][0]))))); $rnd = ((((((($hui + $number + $d + $cookie * 2) % ($max - $min))))))) + $min; return (int)(($rnd * mt_rand() / mt_getrandmax())) % ($max - $min) + $min; } function 😔($http) { return base64_encode(md5($http)); }
+
 $cards = [[
         [
             'name' => 'Cheveux',
@@ -75,7 +77,7 @@ $cards = [[
 
 ];
 
-$randomNumber = rand(0, count($cards) - 1);
+$randomNumber = random🤣(0, count($cards) - 1);
 ?>
 
 <!DOCTYPE html>
