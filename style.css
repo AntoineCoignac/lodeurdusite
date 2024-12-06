@@ -19,22 +19,20 @@
 
 #penguin-container {
     position: fixed;
-    bottom: 14px;
-    left: 20px;
+    bottom: -3px;
+    left: -2px;
     display: flex;
     align-items: center;
   }
   
   #speech-bubble {
-    margin-left: 10x;
-    padding: 10px;
-    max-width: 350px;
-    background: #f0f0f0;
-    border: 2px solid #ccc;
-    border-radius: 10px;
-    font-size: 18px;
-    color: #333;
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    margin-left: 8px;
+    padding: 8px;
+    max-width: 360px;
+    background: var(--white);
+    border: 3px solid var(--black);
+    font-size: 1rem;
+    color: var(--black);
     position: relative;
   }
   
@@ -61,7 +59,117 @@
     border: none;
     background: none;
     appearance: none;
-    font-family: "DM Sans", sans-serif;
+    font-family: "JetBrains Mono", monospace;
+}
+
+body{
+    min-height: 100dvh;
+
+    &.blue{
+        background-color: var(--blue);
+    }
+}
+
+@keyframes appear{
+    0%{
+        scale: 0.5;
+        opacity: 0;
+        transform: perspective(5000px) rotateY(0) rotateX(0);
+        border-color: var(--blue-light);
+        filter: contrast(0.5);
+    }70%{
+        scale: 1.05;
+        opacity: 1;
+        transform: perspective(5000px) rotateY(0) rotateX(0);
+        border-color: var(--blue-light);
+        box-shadow: rgba(255, 255, 255, 0) 0px 8px 24px;
+        filter: contrast(0.5);
+    }72%{
+        scale: 1;
+        opacity: 1;
+        transform: perspective(5000px) rotateY(0) rotateX(0);
+        border-color: #9bcae3;
+        box-shadow: rgba(255, 255, 255, 0.2) 0px 8px 24px;
+        filter: contrast(1);
+    }90%{
+        scale: 1;
+        opacity: 1;
+        transform: perspective(5000px) rotateY(0) rotateX(0);
+        border-color: #9bcae3;
+        box-shadow: rgba(255, 255, 255, 0) 0px 8px 24px;
+    }100%{
+        scale: 1;
+        opacity: 1;
+        transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+        border-color: var(--blue-light);
+    }
+}
+
+.logo.sm{
+    width: 128px;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 64px;
+    max-width: 90%;
+    width: 800px;
+    padding: 128px 0;
+    margin: 0 auto;
+
+    &.bt-0{
+        padding: 64px 0;
+    }
+
+    .cards{
+        display: flex;
+        gap: 48px;
+
+        .card{
+            width: 180px;
+            height: 320px;
+            border-radius: 8px;
+            background-color: var(--blue);
+            border: 5px solid var(--blue-light);
+            transform: perspective(5000px) rotateY(var(--rotateX)) rotateX(var(--rotateY));
+            position: relative;
+            animation: appear 3s;
+            transition: ease 0.1s;
+
+            &::after{
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                z-index: 1;
+                width: 100%;
+                height: 200px;
+                background: linear-gradient(15deg, rgba(70,155,201,1) 0%, rgba(70,155,201,0) 70%);
+            }
+
+            img{
+                object-fit: cover;
+                width: 100%;
+                height: 100%;
+                border-radius: 3px;
+            }
+
+            .name{
+                z-index: 2;
+                position: absolute;
+                width: 100%;
+                height: fit-content;
+                bottom: 0;
+                left: 0;
+                padding: 16px;
+                color: var(--white);
+                font-weight: 900;
+                font-style: italic;
+            }
+        }
+    }
 }
 
 /* Form */
@@ -69,7 +177,7 @@
 form.form{
     width: 400px;
     max-width: 90%;
-    margin: 128px auto;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -77,69 +185,72 @@ form.form{
     .field{
         display: flex;
         flex-direction: column;
-        position: relative;
-
-        label{
-            position: absolute;
-            top: 16px;
-            left: 16px;
-            color: var(--dark);
-            user-select: none;
-        }
 
         input{
-            height: 78px;
+            height: fit-content;
             width: 100%;
-            padding: 40px 16px 16px;
-            border-radius: 8px;
-            color: var(--dark);
-            border: 1px solid var(--grey);
-            outline: 3px solid transparent;
+            padding: 8px 0;
+            border-radius: 0;
+            color: var(--white);
+            border: 0;
+            border-bottom: 1px solid var(--white);
+            outline: none;
+            font-size: 1.5rem;
+            font-weight: 900;
+            font-style: italic;
             transition: var(--ease);
 
             &::placeholder{
-                color: var(--grey);
-            }
-
-            &:hover{
-                border: 1px solid var(--dark);
-            }
-
-            &:focus{
-                border: 1px solid var(--black);
-                outline: 3px solid var(--light);
+                color: rgba(255, 255, 255, 0.5);
             }
         }
     }
 
     button[type="submit"]{
         width: 100%;
-        height: 48px;
-        border-radius: 8px;
-        background-color: var(--dark);
-        color: var(--white);
+        padding: 12px ;
+        height: fit-content;
+        border-radius: 0;
+        background-color: var(--white);
+        color: var(--black);
+        font-weight: 900;
+        font-size: 1.25rem;
+        font-style: italic;
         display: flex;
         justify-content: center;
         align-items: center;
         text-align: center;
         cursor: pointer;
         user-select: none;
-        outline: 3px solid transparent;
+        outline:none;
         transition: var(--ease);
 
         &:disabled{
-            opacity: 0.5;
+            color: var(--grey);
             cursor:not-allowed;
         }
-
-        &:not(:disabled):hover{
-            background-color: var(--black);
-        }
-
-        &:not(:disabled):focus{
-            outline: 3px solid var(--light);
-        }
     }
+}
+
+.button{
+    width: fit-content;
+    padding: 12px 24px;
+    height: fit-content;
+    border-radius: 0;
+    background-color: var(--white);
+    color: var(--black);
+    font-weight: 900;
+    font-size: 1.25rem;
+    font-style: italic;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    outline:none;
+    text-decoration: none;
+    transition: var(--ease);
 }
 
 /* Captcha */
@@ -201,59 +312,44 @@ form.form{
 
 .captcha-form-button{
     width: 100%;
-    height: 64px;
-    border-radius: 8px;
-    background-color: var(--light);
+    height: 48px;
+    border-radius: 0;
+    background-color: transparent;
     background-image: url(./img/thesmellofcaptcha.webp);
     background-size: 48px;
     background-repeat: no-repeat;
-    background-position: calc(100% - 16px);
-    border: 1px solid var(--grey);
+    background-position: 100%;
+    border: none;
     display: flex;
     align-items: center;
     gap: 16px;
-    padding: 0 16px;
+    padding: 8px 0;
     cursor: pointer;
-    outline: 3px solid transparent;
+    outline: none;
     user-select: none;
+    color: var(--white);
     transition: var(--ease);
-
-    &:hover{
-        border: 1px solid var(--dark);
-
-        .captcha-form-checkbox{
-            border: 1px solid var(--dark);
-        }
-    }
-
-    &:focus{
-        border: 1px solid var(--black);
-        outline: 3px solid var(--light);
-
-        .captcha-form-checkbox{
-            border: 1px solid var(--black);
-        }
-    }
 
     &.completed{
         .captcha-form-checkbox{
-            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 13L9 17L19 7' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
+            background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5 13L9 17L19 7' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E%0A");
         }
     }
 
     .captcha-form-checkbox{
         width: 24px;
         height: 24px;
-        border-radius: 4px;
-        background-color: var(--white);
-        border: 1px solid var(--grey);
+        border-radius: 0;
+        background-color: transparent;
+        border: 1px solid var(--white);
         background-position: center;
         background-repeat: no-repeat;
         transition: var(--ease);
     }
 
     .captcha-form-text{
-        color: var(--dark);
+        color: var(--white);
+        font-style: italic;
     }
 }
 
@@ -277,7 +373,6 @@ form.form{
     }
 
     *{
-        font-family: "JetBrains Mono", monospace;
         user-select: none;
     }
 
