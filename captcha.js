@@ -164,7 +164,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         },
         {
-            name: "x3 click",
+            name: "x3 Click",
             cost: 2000,
             buy: false,
             function: function(){
@@ -172,7 +172,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         },
         {
-            name: "x3 Item 1",
+            name: "x3 Bucket",
             cost: 2000,
             buy: false,
             function: function(){
@@ -183,7 +183,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         },
         {
-            name: "x2 Item 2",
+            name: "x2 Fishing ",
             cost: 5000,
             buy: false,
             function: function(){
@@ -480,20 +480,86 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // Instructor
 
     const tips = [
-        "Don't forget to upgrade your items for better efficiency!",
-        "Every piece of waste collected helps save marine life!",
-        "Did you know? Plastic takes over 400 years to decompose.",
-        "Watch your progress! Check the top-right corner for stats.",
-        "Keep collecting to unlock powerful upgrades!",
-        "Remember, teamwork makes the dream work!"
-      ];
+        { 
+          text: "Don't forget to upgrade your items for better efficiency!", 
+          image: "penguin_confident.png" 
+        },
+        { 
+          text: "Every piece of waste collected helps save marine life!", 
+          image: "penguin_confident_2.png" 
+        },
+        { 
+          text: "Did you know? Plastic takes over 400 years to decompose.", 
+          image: "penguin_chocked.png" 
+        },
+        { 
+          text: "Watch your progress! Check the top-right corner for stats.", 
+          image: "penguin_normal.png" 
+        },
+        { 
+          text: "Keep collecting to unlock powerful upgrades!", 
+          image: "penguin_confident.png" 
+        },
+        { 
+          text: "Remember, teamwork makes the dream work!", 
+          image: "penguin_no_mouth.png" 
+        },
+        { 
+          text: "Every year, 8 million metric tons of plastic enter the oceans.", 
+          image: "penguin_chocked_arm.png" 
+        },
+        { 
+          text: "Microplastics are found in 90% of seabirds. Let's change that!", 
+          image: "penguin_angry.png" 
+        },
+        { 
+          text: "Over 1 million marine animals die annually from plastic waste.", 
+          image: "penguin_sad.png" 
+        },
+        { 
+          text: "By 2050, there could be more plastic than fish in the ocean.", 
+          image: "penguin_cry.png" 
+        },
+        { 
+          text: "You're a bit slow for a robot...", 
+          image: "penguin_sad.png" 
+        },
+        { 
+          text: "So far, there's no proof you're a robot.", 
+          image: "penguin_confident_2.png" 
+        },
+        { 
+          text: "I could have done the same... and yet, I'm not a robot.", 
+          image: "penguin_angry.png" 
+        },
+        { 
+          text: "Hurry up, for crying out loud!", 
+          image: "penguin_angry.png" 
+        },
+        { 
+          text: "If you're a robot, you're definitely the least efficient one.", 
+          image: "penguin_no_mouth.png" 
+        },
+        { 
+          text: "Not bad, but the captcha wasn't mandatory. I put a 'skip' button at the end of the form.", 
+          image: "penguin_confident.png" 
+        },
+        { 
+          text: "What happens if I refresh the page now?", 
+          image: "penguin_chocked.png" 
+        }
+      ];      
       
       function updateTip() {
         const speechBubble = document.getElementById("speech-bubble");
+        const penguinImage = document.getElementById("penguin");
+      
         const randomTip = tips[Math.floor(Math.random() * tips.length)];
-        speechBubble.textContent = randomTip;
+        
+        speechBubble.textContent = randomTip.text;
+      
+        penguinImage.src = "img/" + randomTip.image;
       }
       
-      // Change the tip every 10 seconds
-      setInterval(updateTip, 10000);
+      setInterval(updateTip, 20000);
 })
