@@ -540,8 +540,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
           image: "penguin_chocked.png" 
         },
         { 
-          text: "Watch your progress! Check the top-right corner for stats.", 
-          image: "penguin_normal.png" 
+          text: "I think the continue button feels a bit awkward here. Could you help adjust it?.", 
+          image: "penguin_confident_2.png" 
         },
         { 
           text: "Keep collecting to unlock powerful upgrades!", 
@@ -593,7 +593,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
         },
         { 
           text: "What happens if I refresh the page now?", 
-          image: "penguin_chocked.png" 
+          image: "penguin_confident_2.png"
         }
       ];      
       
