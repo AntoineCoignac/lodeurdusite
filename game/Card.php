@@ -8,10 +8,10 @@ class Card
     private $revoked;
     private $winningCard;
     private $selected;
-
     private $index;
+    private $human;
 
-    public function __construct($_description, $_image)
+    public function __construct($_description, $_image, $_human)
     {
         $this->description = $_description;
         $this->image = $_image;
@@ -19,6 +19,7 @@ class Card
         $this->winningCard = false;
         $this->selected = false;
         $this->index = self::$globalIndex;
+        $this->human = $_human;
         self::$globalIndex++;
     }
 
@@ -72,10 +73,28 @@ class Card
         $this->selected = $bool;
     }
 
+    public function getIndex()
+    {
+        return $this->index;
+    }
+
+    public function setIndex($index) {
+        $this->index = $index;
+    }
+
+    public function isHuman()
+    {
+        return $this->human;
+    }
+
+    public function setHuman($human) {
+        $this->human = $human;
+    }
+
     public function render()
     {
         // Vérifier si la carte est "revoked"
-        $revokedClass = $this->revoked ? " revoked" : "";
+        $revokedClass = $this->revoked ? " revoke" : "";
 
         return "
     <div class='card$revokedClass' id='$this->index'>

@@ -1,19 +1,12 @@
 <?php
 // Inclure le fichier de la classe Card
 include("Card.php");
+include("utils.php");
 
 // Créer des cartes d'exemple
-$cards = [
-    new Card("Titre 1", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 2", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 3", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 4", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 5", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 6", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 7", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 8", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-    new Card("Titre 9", "https://www.legrand.fr/sites/default/files/styles/640x360/public/cables-etincelles-640x360_0.jpg?itok=v8zzKEAg"),
-];
+session_start();
+$cards = $_SESSION["cards"];
+
 ?>
 
 <!DOCTYPE html>
@@ -26,64 +19,26 @@ $cards = [
 </head>
 <body>
 <div class="container">
-    <div class="current-player">Current Player: [Player Name]</div>
-    <div class="instruction">Player [1|2], ask a question to Player [2|1] and try to guess the card.</div>
+    <div class="current-player">Current Player: <?php printPlayerName() ?></div>
+    <div class="instruction">Player <?php printPlayerName() ?>, ask a question to Player <?php printOtherPlayerName() ?>     and try to guess the card.</div>
     <div class="card-grid">
         <?php
-        // Afficher chaque carte en utilisant la méthode render()
-        foreach ($cards as $card):
-            echo $card->render();
-        endforeach;
+        showCards($cards);
         ?>
     </div>
 
     <div class="buttons">
-        <button onclick="revokeSelected()">Revoke</button>
-        <button id="guessButton" onclick="guessSelected()" disabled>Guess</button>
+        
+        <form action="submit.php" method="POST" id="submit">
+            <input type="hidden" name="player" id="player"/>
+            <input type="hidden" name="origin" id="origin"/>
+            <input type="hidden" name="revokedElements" id="revokedElements"/>
+            <button type="button" onclick="revokeSelected()">Revoke</button>
+            <button type="button" id="guessButton" onclick="guessSelected()" disabled="disabled">Guess</button>        </form>
+    
     </div>
 </div>
 
-<script>
-    // Fonction pour gérer la sélection d'une carte
-    function toggleSelect(cardElement) {
-        cardElement.classList.toggle('selected');
-        updateGuessButton();
-    }
-
-    // Fonction pour révoquer les cartes sélectionnées
-    function revokeSelected() {
-        const selectedCards = document.querySelectorAll('.card.selected');
-        selectedCards.forEach(card => {
-            card.classList.add('revoke');
-            card.classList.remove('selected');
-        });
-        updateGuessButton();  // Vérifie si le bouton doit être activé ou non après la révocation
-    }
-
-    // Fonction pour deviner une carte
-    function guessSelected() {
-        const selectedCards = document.querySelectorAll('.card.selected');
-        if (selectedCards.length === 1) {
-            alert("You guessed a card!");
-            selectedCards.forEach(card => card.classList.remove('selected'));
-        } else {
-            alert("Please select only one card!");
-        }
-    }
-
-    // Fonction pour mettre à jour l'état du bouton "Guess"
-    function updateGuessButton() {
-        const selectedCards = document.querySelectorAll('.card.selected');
-        const guessButton = document.getElementById('guessButton');
-
-        // Active le bouton si exactement une carte est sélectionnée
-        if (selectedCards.length === 1) {
-            guessButton.disabled = false;
-        } else {
-            guessButton.disabled = true;
-        }
-    }
-
-</script>
+<script src="script.js"></script>
 </body>
 </html>

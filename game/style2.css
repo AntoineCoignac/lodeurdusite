@@ -40,6 +40,13 @@ body {
     filter: brightness(0.7);
 }
 
+/* Désactiver l'effet hover pour les cartes révoquées */
+.card.revoke:hover {
+    cursor: not-allowed;  /* Change le curseur pour indiquer que l'action n'est pas permise */
+    transform: none;       /* Désactive l'effet de transformation, si présent */
+    opacity: 1;            /* Supprime la transparence qui pourrait être appliquée sur hover */
+}
+
 /* Titres des cartes */
 .card h3 {
     margin: 0;
