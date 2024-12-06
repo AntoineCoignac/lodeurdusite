@@ -33,8 +33,8 @@ $cards = $_SESSION["cards"];
             <input type="hidden" name="player" id="player"/>
             <input type="hidden" name="origin" id="origin"/>
             <input type="hidden" name="revokedElements" id="revokedElements"/>
-            <button onclick="revokeSelected()">Revoke</button>
-            <button id="guessButton" onclick="guessSelected()" disabled="disabled">Guess</button>        </form>
+            <button type="button" onclick="revokeSelected()">Revoke</button>
+            <button type="button" id="guessButton" onclick="guessSelected()" disabled="disabled">Guess</button>        </form>
     
     </div>
 </div>
