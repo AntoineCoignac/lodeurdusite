@@ -42,10 +42,41 @@ function guessSelected() {
     const validCards = Array.from(selectedCards).filter(card => !card.classList.contains('revoke'));
 
     if (validCards.length === 1) {
-        alert("You guessed a card!");
-        validCards.forEach(card => card.classList.remove('selected'));
+        const selectedCardID = validCards[0].id; // ID de la carte sélectionnée
+        const playerNumber = new URLSearchParams(window.location.search).get("player");
+
+        // Prépare les données à envoyer au serveur
+        const formData = new FormData();
+        formData.append("player", playerNumber);
+        formData.append("origin", "guess");
+        formData.append("cardID", selectedCardID);
+
+        // Envoie une requête au serveur pour récupérer l'état "selected" de la carte
+        fetch("submit.php", {
+            method: "POST",
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.correct) {
+                    alert("Bravo ! Vous avez deviné la bonne carte !");
+                    // Rediriger ou traiter le résultat après l'alerte
+                    window.location.href = `win_screen.php?winner=${playerNumber}&cardIDs=${selectedCardID}`;
+                } else {
+                    alert("Ce n'est pas la bonne carte, à l'autre joueur !");
+                    // Révoquer la carte incorrecte et passer au joueur suivant
+                    const card = document.getElementById(selectedCardID);
+                    card.classList.add('revoke'); // Révoquer la carte
+
+                    window.location.href = `guessboard.php?player=${data.nextPlayer}`;
+                }
+            })
+            .catch(error => {
+                console.error("Erreur lors de la soumission :", error);
+                alert("Une erreur s'est produite lors du guess.");
+            });
     } else {
-        alert("Please select only one valid card!");
+        alert("Veuillez sélectionner une seule carte valide pour deviner !");
     }
 }
 

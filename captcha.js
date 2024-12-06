@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", (event) => {
     let goal = 10000;
-    
+
     let score = 0;
     let speed = 0;
 
@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     let currentImageIndex = 0;
 
-    clickBox.addEventListener("click", function(event){
+    clickBox.addEventListener("click", function (event) {
         score += cursorInitialValue * cursorMultiplier;
         uiUpdateScore();
         uiUpdateItems();
@@ -176,8 +176,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 100,
             buy: false,
             img: "./img/icons/cursor_x2.svg",
-            function: function(){
-                cursorMultiplier*=2
+            function: function () {
+                cursorMultiplier *= 2
             }
         },
         {
@@ -185,8 +185,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 1000,
             buy: false,
             img: "./img/icons/1_x2.svg",
-            function: function(){
-                items[0].cpsMultiplier*=2
+            function: function () {
+                items[0].cpsMultiplier *= 2
             }
         },
         {
@@ -194,8 +194,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 2000,
             buy: false,
             img: "./img/icons/cursor_x3.svg",
-            function: function(){
-                cursorMultiplier*=3
+            function: function () {
+                cursorMultiplier *= 3
             }
         },
         {
@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 2000,
             buy: false,
             img: "./img/icons/1_x2.svg",
-            function: function(){
+            function: function () {
                 goal = 100000
                 uiUpdateEnd();
                 uiUpdateEndButton()
@@ -215,8 +215,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 5000,
             buy: false,
             img: "./img/icons/2_x2.svg",
-            function: function(){
-                items[1].cpsMultiplier*=2
+            function: function () {
+                items[1].cpsMultiplier *= 2
             }
         },
         {
@@ -224,8 +224,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 8000,
             buy: false,
             img: "./img/icons/3_x2.svg",
-            function: function(){
-                items[2].cpsMultiplier*=2
+            function: function () {
+                items[2].cpsMultiplier *= 2
             }
         },
         {
@@ -233,8 +233,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 10000,
             buy: false,
             img: "./img/icons/1_10p.svg",
-            function: function(){
-                items[0].cpsMultiplier*=1.10
+            function: function () {
+                items[0].cpsMultiplier *= 1.10
             }
         },
         {
@@ -242,8 +242,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 40000,
             buy: false,
             img: "./img/icons/4_x2.svg",
-            function: function(){
-                items[3].cpsMultiplier*=2
+            function: function () {
+                items[3].cpsMultiplier *= 2
             }
         },
         {
@@ -251,8 +251,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 50000,
             buy: false,
             img: "./img/icons/cursor_x4.svg",
-            function: function(){
-                cursorMultiplier*=4
+            function: function () {
+                cursorMultiplier *= 4
             }
         },
         {
@@ -260,8 +260,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 100000,
             buy: false,
             img: "./img/icons/2_10p.svg",
-            function: function(){
-                items[1].cpsMultiplier*=1.10
+            function: function () {
+                items[1].cpsMultiplier *= 1.10
             }
         },
         {
@@ -269,8 +269,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 110000,
             buy: false,
             img: "./img/icons/cursor_x5.svg",
-            function: function(){
-                cursorMultiplier*=5
+            function: function () {
+                cursorMultiplier *= 5
             }
         },
         {
@@ -278,8 +278,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 500000,
             buy: false,
             img: "./img/icons/5_x2.svg",
-            function: function(){
-                items[4].cpsMultiplier*=2
+            function: function () {
+                items[4].cpsMultiplier *= 2
             }
         },
         {
@@ -287,8 +287,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 600000,
             buy: false,
             img: "./img/icons/cursor_x6.svg",
-            function: function(){
-                cursorMultiplier*=6
+            function: function () {
+                cursorMultiplier *= 6
             }
         },
         {
@@ -296,8 +296,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 5000000,
             buy: false,
             img: "./img/icons/6_x2.svg",
-            function: function(){
-                items[5].cpsMultiplier*=2
+            function: function () {
+                items[5].cpsMultiplier *= 2
             }
         },
         {
@@ -305,8 +305,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 50000000,
             buy: false,
             img: "./img/icons/7_x2.svg",
-            function: function(){
-                items[6].cpsMultiplier*=2
+            function: function () {
+                items[6].cpsMultiplier *= 2
             }
         },
         {
@@ -314,8 +314,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 500000000,
             buy: false,
             img: "./img/icons/8_x2.svg",
-            function: function(){
-                items[7].cpsMultiplier*=2
+            function: function () {
+                items[7].cpsMultiplier *= 2
             }
         },
         {
@@ -323,8 +323,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 5000000000,
             buy: false,
             img: "./img/icons/9_x2.svg",
-            function: function(){
-                items[8].cpsMultiplier*=2
+            function: function () {
+                items[8].cpsMultiplier *= 2
             }
         },
         {
@@ -332,8 +332,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 50000000000,
             buy: false,
             img: "./img/icons/10_x2.svg",
-            function: function(){
-                items[9].cpsMultiplier*=2
+            function: function () {
+                items[9].cpsMultiplier *= 2
             }
         },
         {
@@ -341,8 +341,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 500000000000,
             buy: false,
             img: "./img/icons/11_x2.svg",
-            function: function(){
-                items[10].cpsMultiplier*=2
+            function: function () {
+                items[10].cpsMultiplier *= 2
             }
         },
         {
@@ -350,8 +350,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 1000000000000,
             buy: false,
             img: "./img/icons/12_x2.svg",
-            function: function(){
-                items[11].cpsMultiplier*=2
+            function: function () {
+                items[11].cpsMultiplier *= 2
             }
         },
         {
@@ -359,8 +359,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
             cost: 10000000000000,
             buy: false,
             img: "./img/icons/cursor_x10.svg",
-            function: function(){
-                cursorMultiplier*=10
+            function: function () {
+                cursorMultiplier *= 10
             }
         },
     ]
@@ -374,10 +374,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
     const uiEndButton = document.querySelector(".captcha-button-finish");
 
     const uiUpdateEnd = () => {
-        if (score >= goal){
-            uiEndButton.disabled=false;
-        }else{
-            uiEndButton.disabled=true;
+        if (score >= goal) {
+            uiEndButton.disabled = false;
+        } else {
+            uiEndButton.disabled = true;
         }
     }
 
@@ -401,14 +401,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
             button.className = "captcha-button-item";
             button.id = `item-${index}`;
             button.disabled = true;
-            button.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
-            button.style.backgroundImage=`url(./img/icons/${index+1}.svg)`;
+            button.title = `+${item.cpsInitialValue * item.cpsMultiplier} per second by unit`;
+            button.style.backgroundImage = `url(./img/icons/${index + 1}.svg)`;
 
             // Toujours afficher l'item 1
             if (index == 0) {
                 button.classList.add("show-item")
                 button.classList.add("show-content")
-            } 
+            }
 
             // Création des éléments span pour le nom et le coût
             const titleSpan = document.createElement("span");
@@ -433,30 +433,30 @@ document.addEventListener("DOMContentLoaded", (event) => {
             // Ajout du bouton à l'élément wrapper
             uiItemsWrapper.appendChild(button);
 
-            button.addEventListener("click", function(){
+            button.addEventListener("click", function () {
                 item.number += 1;
-                score-=item.costInitialValue*item.costMultiplier;
+                score -= item.costInitialValue * item.costMultiplier;
                 item.costMultiplier += 1;
             })
         });
     }
-    
+
     const uiUpdateItems = () => {
         items.forEach((item, index) => {
             const uiItem = uiItemsWrapper.querySelector(`#item-${index}`);
             const uiPrice = uiItem.querySelector("#price");
             const uiNumber = uiItem.querySelector("#number");
             uiPrice.textContent = (item.costInitialValue * item.costMultiplier).toLocaleString();
-            uiItem.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
+            uiItem.title = `+${item.cpsInitialValue * item.cpsMultiplier} per second by unit`;
             uiNumber.textContent = item.number;
 
             if (score >= (item.costInitialValue * item.costMultiplier)) {
                 uiItem.disabled = false;
-            }else{
+            } else {
                 uiItem.disabled = true;
             }
 
-            if (item.number > 0){
+            if (item.number > 0) {
                 uiNumber.classList.add("show");
             }
             if (score >= item.costInitialValue * 0.10 && !uiItem.classList.contains("show-item")) {
@@ -468,8 +468,8 @@ document.addEventListener("DOMContentLoaded", (event) => {
         });
     }
 
-    const uiSetupImprovements = ()=>{
-        improvements.forEach((improvement, index)=>{
+    const uiSetupImprovements = () => {
+        improvements.forEach((improvement, index) => {
             // Création d'un bouton pour chaque amélioration
             const button = document.createElement("button");
             button.className = "captcha-button-improvement";
@@ -481,7 +481,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             // Ajout du bouton à l'élément wrapper
             uiImprovementsWrapper.appendChild(button);
 
-            button.addEventListener("click", function(){
+            button.addEventListener("click", function () {
                 improvement.buy = true;
                 improvement.function();
                 score -= improvement.cost;
@@ -493,13 +493,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
         improvements.forEach((improvement, index) => {
             const uiImprovement = uiImprovementsWrapper.querySelector(`#improvement-${index}`);
 
-            if (improvement.buy){
+            if (improvement.buy) {
                 uiImprovement.classList.add("hide");
             }
 
             if (score >= (improvement.cost)) {
                 uiImprovement.disabled = false;
-            }else{
+            } else {
                 uiImprovement.disabled = true;
             }
         });
@@ -513,11 +513,11 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     setInterval(() => {
         let calculatedSpeed = 0;
-        items.forEach(item=>{
-            score+=((item.cpsInitialValue*item.cpsMultiplier)/10)*item.number;
-            calculatedSpeed += ((item.cpsInitialValue*item.cpsMultiplier)/10)*item.number;
+        items.forEach(item => {
+            score += ((item.cpsInitialValue * item.cpsMultiplier) / 10) * item.number;
+            calculatedSpeed += ((item.cpsInitialValue * item.cpsMultiplier) / 10) * item.number;
         })
-        speed = calculatedSpeed*10;
+        speed = calculatedSpeed * 10;
         uiUpdateScore();
         uiUpdateSpeed();
         uiUpdateItems();
@@ -527,86 +527,89 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // Instructor
 
     const tips = [
-        { 
-          text: "Don't forget to upgrade your items for better efficiency!", 
-          image: "penguin_confident.png" 
+        {
+            text: "Don't forget to upgrade your items for better efficiency!",
+            image: "penguin_confident.png"
         },
-        { 
-          text: "Every piece of waste collected helps save marine life!", 
-          image: "penguin_confident_2.png" 
+        {
+            text: "Every piece of waste collected helps save marine life!",
+            image: "penguin_confident_2.png"
         },
-        { 
-          text: "Did you know? Plastic takes over 400 years to decompose.", 
-          image: "penguin_chocked.png" 
+        {
+            text: "Did you know? Plastic takes over 400 years to decompose.",
+            image: "penguin_chocked.png"
         },
-        { 
-          text: "I think the continue button feels a bit awkward here. Could you help adjust it?.", 
-          image: "penguin_confident_2.png" 
+        {
+            text: "I think the continue button feels a bit awkward here. Could you help adjust it?.",
+            image: "penguin_confident_2.png"
         },
-        { 
-          text: "Keep collecting to unlock powerful upgrades!", 
-          image: "penguin_confident.png" 
+        {
+            text: "Keep collecting to unlock powerful upgrades!",
+            image: "penguin_confident.png"
         },
-        { 
-          text: "Remember, teamwork makes the dream work!", 
-          image: "penguin_no_mouth.png" 
+        {
+            text: "Remember, teamwork makes the dream work!",
+            image: "penguin_no_mouth.png"
         },
-        { 
-          text: "Every year, 8 million metric tons of plastic enter the oceans.", 
-          image: "penguin_chocked_arm.png" 
+        {
+            text: "Every year, 8 million metric tons of plastic enter the oceans.",
+            image: "penguin_chocked_arm.png"
         },
-        { 
-          text: "Microplastics are found in 90% of seabirds. Let's change that!", 
-          image: "penguin_angry.png" 
+        {
+            text: "Microplastics are found in 90% of seabirds. Let's change that!",
+            image: "penguin_angry.png"
         },
-        { 
-          text: "Over 1 million marine animals die annually from plastic waste.", 
-          image: "penguin_sad.png" 
+        {
+            text: "Over 1 million marine animals die annually from plastic waste.",
+            image: "penguin_sad.png"
         },
-        { 
-          text: "By 2050, there could be more plastic than fish in the ocean.", 
-          image: "penguin_cry.png" 
+        {
+            text: "By 2050, there could be more plastic than fish in the ocean.",
+            image: "penguin_cry.png"
         },
-        { 
-          text: "You're a bit slow for a robot...", 
-          image: "penguin_sad.png" 
+        {
+            text: "You're a bit slow for a robot...",
+            image: "penguin_sad.png"
         },
-        { 
-          text: "So far, there's no proof you're a robot.", 
-          image: "penguin_confident_2.png" 
+        {
+            text: "So far, there's no proof you're a robot.",
+            image: "penguin_confident_2.png"
         },
-        { 
-          text: "I could have done the same... and yet, I'm not a robot.", 
-          image: "penguin_angry.png" 
+        {
+            text: "I could have done the same... and yet, I'm not a robot.",
+            image: "penguin_angry.png"
         },
-        { 
-          text: "Hurry up, for crying out loud!", 
-          image: "penguin_angry.png" 
+        {
+            text: "Hurry up, for crying out loud!",
+            image: "penguin_angry.png"
         },
-        { 
-          text: "If you're a robot, you're definitely the least efficient one.", 
-          image: "penguin_no_mouth.png" 
+        {
+            text: "If you're a robot, you're definitely the least efficient one.",
+            image: "penguin_no_mouth.png"
         },
-        { 
-          text: "Not bad, but the captcha wasn't mandatory. I put a 'skip' button at the end of the form.", 
-          image: "penguin_confident.png" 
+        {
+            text: "Not bad, but the captcha wasn't mandatory. I put a 'skip' button at the end of the form.",
+            image: "penguin_confident.png"
         },
-        { 
-          text: "What happens if I refresh the page now?", 
-          image: "penguin_confident_2.png"
+        {
+            text: "What happens if I refresh the page now?",
+            image: "penguin_confident_2.png"
+        },
+        {
+            text: "не трудитесь переводить этот текст, он совершенно бесполезен!",
+            image: "penguin_confident_2.png"
         }
-      ];      
-      
+    ];
+
     function updateTip() {
         const speechBubble = document.getElementById("speech-bubble");
         const penguinImage = document.getElementById("penguin");
-      
+
         const randomTip = tips[Math.floor(Math.random() * tips.length)];
-        
+
         speechBubble.textContent = randomTip.text;
-      
         penguinImage.src = "img/" + randomTip.image;
-      }
-      
-      setInterval(updateTip, 20000);
+    }
+
+    setInterval(updateTip, 20000);
 })
