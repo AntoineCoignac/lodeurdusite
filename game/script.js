@@ -17,6 +17,7 @@ function revokeSelected() {
     checkRevokeCards = totalCards.length - (selectedCards.length + revokeCards.length);
 
     if(checkRevokeCards < 1) {
+        alert("You only have one card left, guess it !");
         return;
     }
 
