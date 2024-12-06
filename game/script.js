@@ -61,7 +61,7 @@ function guessSelected() {
                 if (data.correct) {
                     alert("Bravo ! Vous avez deviné la bonne carte !");
                     // Rediriger ou traiter le résultat après l'alerte
-                    window.location.href = `win_screen.php?winner=${playerNumber}`;
+                    window.location.href = `win_screen.php?winner=${playerNumber}&cardIDs${selectedCardID}`;
                 } else {
                     alert("Ce n'est pas la bonne carte, à l'autre joueur !");
                     // Révoquer la carte incorrecte et passer au joueur suivant
