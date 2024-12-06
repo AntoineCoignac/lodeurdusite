@@ -17,6 +17,20 @@ endforeach;
         header("Location: selection_card.php?player=2");
     }
 }
+
+if ($_POST["origin"] == "revoke") {
+    $revokedElements = json_decode($_POST["revokedElements"]);
+    foreach ($cards as $card) {
+        foreach ($revokedElements as $key => $revoked) {
+            if ($revoked == $card->getIndex()) {
+                $card->setRevoked(true);
+                unset($revokedElements[$key]);
+                break;
+            }
+        }
+    }
+    header("Location: guessboard.php?player=" . ($_POST["player"] == 1 ? 2 : 1));
+}
 die();
 
 

@@ -94,7 +94,7 @@ class Card
     public function render()
     {
         // Vérifier si la carte est "revoked"
-        $revokedClass = $this->revoked ? " revoked" : "";
+        $revokedClass = $this->revoked ? " revoke" : "";
 
         return "
     <div class='card$revokedClass' id='$this->index'>
