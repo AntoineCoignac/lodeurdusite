@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             number: 0
         },
         {
-            name: "AI-Controlled Fleet",
+            name: "Waste-Catching Reef",
             costInitialValue: 10000000000,
             costMultiplier: 1,
             cpsInitialValue: 21600000,
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             number: 0
         },
         {
-            name: "Nano-Bots",
+            name: "Solar-Powered Waste Harvester",
             costInitialValue: 100000000000,
             costMultiplier: 1,
             cpsInitialValue: 100000000,
@@ -135,10 +135,34 @@ document.addEventListener("DOMContentLoaded", (event) => {
             number: 0
         },
         {
-            name: "Global Cleanup Satellite",
+            name: "AI-Controlled Fleet",
             costInitialValue: 1000000000000,
             costMultiplier: 1,
             cpsInitialValue: 700000000,
+            cpsMultiplier: 1,
+            number: 0
+        },
+        {
+            name: "Nano-Bots",
+            costInitialValue: 10000000000000,
+            costMultiplier: 1,
+            cpsInitialValue: 4200000000,
+            cpsMultiplier: 1,
+            number: 0
+        },
+        {
+            name: "Deep-Sea Harvester",
+            costInitialValue: 100000000000000,
+            costMultiplier: 1,
+            cpsInitialValue: 25400000000,
+            cpsMultiplier: 1,
+            number: 0
+        },
+        {
+            name: "Global Cleanup Satellite",
+            costInitialValue: 1000000000000000,
+            costMultiplier: 1,
+            cpsInitialValue: 100000000000,
             cpsMultiplier: 1,
             number: 0
         },
@@ -151,6 +175,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             name: "x2 click",
             cost: 100,
             buy: false,
+            img: "./img/icons/cursor_x2.svg",
             function: function(){
                 cursorMultiplier*=2
             }
@@ -159,22 +184,25 @@ document.addEventListener("DOMContentLoaded", (event) => {
             name: "x2 Bucket",
             cost: 1000,
             buy: false,
+            img: "./img/icons/1_x2.svg",
             function: function(){
                 items[0].cpsMultiplier*=2
             }
         },
         {
-            name: "x3 click",
+            name: "x3 Click",
             cost: 2000,
             buy: false,
+            img: "./img/icons/cursor_x3.svg",
             function: function(){
                 cursorMultiplier*=3
             }
         },
         {
-            name: "x3 Item 1",
+            name: "x2 Bucket",
             cost: 2000,
             buy: false,
+            img: "./img/icons/1_x2.svg",
             function: function(){
                 goal = 100000
                 uiUpdateEnd();
@@ -183,33 +211,37 @@ document.addEventListener("DOMContentLoaded", (event) => {
             }
         },
         {
-            name: "x2 Item 2",
+            name: "x2 Fishing Net",
             cost: 5000,
             buy: false,
+            img: "./img/icons/2_x2.svg",
             function: function(){
                 items[1].cpsMultiplier*=2
             }
         },
         {
-            name: "x2 Item 3",
+            name: "x2 Trash Collector Boat",
             cost: 8000,
             buy: false,
+            img: "./img/icons/3_x2.svg",
             function: function(){
                 items[2].cpsMultiplier*=2
             }
         },
         {
-            name: "+10% Item 1",
+            name: "+10% Bucket",
             cost: 10000,
             buy: false,
+            img: "./img/icons/1_10p.svg",
             function: function(){
                 items[0].cpsMultiplier*=1.10
             }
         },
         {
-            name: "x2 Item 4",
+            name: "x2 Drone Collector",
             cost: 40000,
             buy: false,
+            img: "./img/icons/4_x2.svg",
             function: function(){
                 items[3].cpsMultiplier*=2
             }
@@ -218,14 +250,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
             name: "x4 click",
             cost: 50000,
             buy: false,
+            img: "./img/icons/cursor_x4.svg",
             function: function(){
                 cursorMultiplier*=4
             }
         },
         {
-            name: "+10% Item 2",
+            name: "+10% Fishing Net",
             cost: 100000,
             buy: false,
+            img: "./img/icons/2_10p.svg",
             function: function(){
                 items[1].cpsMultiplier*=1.10
             }
@@ -234,14 +268,16 @@ document.addEventListener("DOMContentLoaded", (event) => {
             name: "x5 click",
             cost: 110000,
             buy: false,
+            img: "./img/icons/cursor_x5.svg",
             function: function(){
                 cursorMultiplier*=5
             }
         },
         {
-            name: "x2 Item 5",
+            name: "x2 Trash Boom",
             cost: 500000,
             buy: false,
+            img: "./img/icons/5_x2.svg",
             function: function(){
                 items[4].cpsMultiplier*=2
             }
@@ -250,70 +286,79 @@ document.addEventListener("DOMContentLoaded", (event) => {
             name: "x6 click",
             cost: 600000,
             buy: false,
+            img: "./img/icons/cursor_x6.svg",
             function: function(){
                 cursorMultiplier*=6
             }
         },
         {
-            name: "x2 Item 6",
+            name: "x2 Underwater Vacuum",
             cost: 5000000,
             buy: false,
+            img: "./img/icons/6_x2.svg",
             function: function(){
                 items[5].cpsMultiplier*=2
             }
         },
         {
-            name: "x2 Item 7",
+            name: "x2 Marine Robot",
             cost: 50000000,
             buy: false,
+            img: "./img/icons/7_x2.svg",
             function: function(){
                 items[6].cpsMultiplier*=2
             }
         },
         {
-            name: "x2 Item 8",
+            name: "x2 Recycling Station",
             cost: 500000000,
             buy: false,
+            img: "./img/icons/8_x2.svg",
             function: function(){
                 items[7].cpsMultiplier*=2
             }
         },
         {
-            name: "x2 Item 9",
+            name: "x2 Ocean Skimmer",
             cost: 5000000000,
             buy: false,
+            img: "./img/icons/9_x2.svg",
             function: function(){
                 items[8].cpsMultiplier*=2
             }
         },
         {
-            name: "x2 Item 10",
+            name: "x2 Waste-Catching Reef",
             cost: 50000000000,
             buy: false,
+            img: "./img/icons/10_x2.svg",
             function: function(){
                 items[9].cpsMultiplier*=2
             }
         },
         {
-            name: "x2 Item 11",
+            name: "x2 Solar-Powered Waste Harvester",
             cost: 500000000000,
             buy: false,
+            img: "./img/icons/11_x2.svg",
             function: function(){
                 items[10].cpsMultiplier*=2
             }
         },
         {
-            name: "x2 Item 12",
+            name: "x2 AI-Controlled Fleet",
             cost: 1000000000000,
             buy: false,
+            img: "./img/icons/12_x2.svg",
             function: function(){
                 items[11].cpsMultiplier*=2
             }
         },
         {
-            name: "x10 Click",
+            name: "x10 click",
             cost: 10000000000000,
             buy: false,
+            img: "./img/icons/cursor_x10.svg",
             function: function(){
                 cursorMultiplier*=10
             }
@@ -357,6 +402,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             button.id = `item-${index}`;
             button.disabled = true;
             button.title = `+${item.cpsInitialValue*item.cpsMultiplier} per second by unit`;
+            button.style.backgroundImage=`url(./img/icons/${index+1}.svg)`;
 
             // Toujours afficher l'item 1
             if (index == 0) {
@@ -430,6 +476,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
             button.id = `improvement-${index}`;
             button.disabled = true;
             button.title = `${improvement.name} | Price: ${improvement.cost.toLocaleString()}`;
+            button.style.backgroundImage = `url(${improvement.img})`;
 
             // Ajout du bouton à l'élément wrapper
             uiImprovementsWrapper.appendChild(button);
@@ -480,20 +527,86 @@ document.addEventListener("DOMContentLoaded", (event) => {
     // Instructor
 
     const tips = [
-        "Don't forget to upgrade your items for better efficiency!",
-        "Every piece of waste collected helps save marine life!",
-        "Did you know? Plastic takes over 400 years to decompose.",
-        "Watch your progress! Check the top-right corner for stats.",
-        "Keep collecting to unlock powerful upgrades!",
-        "Remember, teamwork makes the dream work!"
-      ];
+        { 
+          text: "Don't forget to upgrade your items for better efficiency!", 
+          image: "penguin_confident.png" 
+        },
+        { 
+          text: "Every piece of waste collected helps save marine life!", 
+          image: "penguin_confident_2.png" 
+        },
+        { 
+          text: "Did you know? Plastic takes over 400 years to decompose.", 
+          image: "penguin_chocked.png" 
+        },
+        { 
+          text: "Watch your progress! Check the top-right corner for stats.", 
+          image: "penguin_normal.png" 
+        },
+        { 
+          text: "Keep collecting to unlock powerful upgrades!", 
+          image: "penguin_confident.png" 
+        },
+        { 
+          text: "Remember, teamwork makes the dream work!", 
+          image: "penguin_no_mouth.png" 
+        },
+        { 
+          text: "Every year, 8 million metric tons of plastic enter the oceans.", 
+          image: "penguin_chocked_arm.png" 
+        },
+        { 
+          text: "Microplastics are found in 90% of seabirds. Let's change that!", 
+          image: "penguin_angry.png" 
+        },
+        { 
+          text: "Over 1 million marine animals die annually from plastic waste.", 
+          image: "penguin_sad.png" 
+        },
+        { 
+          text: "By 2050, there could be more plastic than fish in the ocean.", 
+          image: "penguin_cry.png" 
+        },
+        { 
+          text: "You're a bit slow for a robot...", 
+          image: "penguin_sad.png" 
+        },
+        { 
+          text: "So far, there's no proof you're a robot.", 
+          image: "penguin_confident_2.png" 
+        },
+        { 
+          text: "I could have done the same... and yet, I'm not a robot.", 
+          image: "penguin_angry.png" 
+        },
+        { 
+          text: "Hurry up, for crying out loud!", 
+          image: "penguin_angry.png" 
+        },
+        { 
+          text: "If you're a robot, you're definitely the least efficient one.", 
+          image: "penguin_no_mouth.png" 
+        },
+        { 
+          text: "Not bad, but the captcha wasn't mandatory. I put a 'skip' button at the end of the form.", 
+          image: "penguin_confident.png" 
+        },
+        { 
+          text: "What happens if I refresh the page now?", 
+          image: "penguin_chocked.png" 
+        }
+      ];      
       
-      function updateTip() {
+    function updateTip() {
         const speechBubble = document.getElementById("speech-bubble");
+        const penguinImage = document.getElementById("penguin");
+      
         const randomTip = tips[Math.floor(Math.random() * tips.length)];
-        speechBubble.textContent = randomTip;
+        
+        speechBubble.textContent = randomTip.text;
+      
+        penguinImage.src = "img/" + randomTip.image;
       }
       
-      // Change the tip every 10 seconds
-      setInterval(updateTip, 10000);
+      setInterval(updateTip, 20000);
 })

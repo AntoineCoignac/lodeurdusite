@@ -14,7 +14,7 @@
         </div>
         <button type="button" class="captcha-form-button">
             <span class="captcha-form-checkbox"></span>
-            <span class="captcha-form-text">I'm not a robot</span>
+            <span class="captcha-form-text">I'm a gros bot</span>
         </button>
         <button type="submit" disabled>
             Continue
